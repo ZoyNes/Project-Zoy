@@ -1,0 +1,64 @@
+{{#is_blog}}
+<section data-qb-element="blog" class="pt-2 pt-lg-4 container">
+  <div class="row">
+
+    {{#element.posts}}
+    <!-- Blog post-->
+    <article class="post py-2 {{element.blog_rowsort}} col-sm-12 mb-5" itemscope itemtype="http://schema.org/BlogPosting">
+      <div data-aos="{{settings.aos_effect}}">
+        {{#post.hasImage}}
+        <div class="blog_post_image" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+          <a href="{{post.url}}" class="d-block mb-4">
+            <img loading="lazy" ix-src="{{post.image}}{{#element.blog_image_manualheight}}&amp;h={{element.blog_image_manualheight}}{{/element.blog_image_manualheight}}&amp;fit=crop" ix-sizes="auto" alt="{{post.title}}" class="start-blog">
+          </a>
+          <meta itemprop="url" content="{{post.image}}">
+          <meta itemprop="width" content="500">
+          <meta itemprop="height" content="500">
+        </div>
+        {{/post.hasImage}}
+
+        <div class="blog_post_details">
+          <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+            <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+              <meta itemprop="url" content="{{#assets}}logo.png{{/assets}}">
+              <meta itemprop="width" content="150">
+              <meta itemprop="height" content="150">
+            </div>
+            <meta itemprop="name" content="{{shop.name}}">
+          </div>
+
+          <p class="opacity-8 text-sm mb-0">
+            <meta itemprop="datePublished dateModified" content="{{post.date}}">
+            <span class="text-uppercase text-xs mr-1">{{post.date_pretty}}</span><span class="text-xs"
+              itemprop="author">{{#lang}}by{{/lang}} {{post.author}}</span>
+          </p>
+
+        </div>
+        <h2 class="h5 mb-2" itemprop="headline mainEntityOfPage">
+          <a href="{{post.url}}" class="text-dark">{{#lang}}{{post.title}}{{/lang}}</a>
+        </h2>
+
+        <div class="blog_post_content" itemprop="articleBody">
+          {{#lang}}{{&post.content_short}}{{/lang}}
+        </div>
+
+        <a class="font-weight-bold" href="{{post.url}}">{{#lang}}Read More{{/lang}}</a>
+
+      </div>
+    </article>
+
+    <!-- /Blog post end-->
+    {{/element.posts}}
+
+    {{#element.blog_showbutton}}
+    <div class="col-12 align-items-end mb-4">
+        <div class="col-sm-auto text-center">
+          <a data-qb-setting="blog_buttontext" href="{{blog_endpoint}}" class="btn btn-link px-0 color-primary">{{#lang}}{{element.blog_buttontext}}{{/lang}} <i class="fa fa-chevron-right ml-1"></i></a>
+        </div>
+    </div>
+    {{/element.blog_showbutton}}
+
+  </div>
+
+</section>
+{{/is_blog}}

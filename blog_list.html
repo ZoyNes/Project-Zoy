@@ -1,0 +1,64 @@
+<section class="container overflow-hidden">
+    <div class="hero-content hero-heading">
+      <h1 class="hero-heading {{settings.list_title_align}} mb-0">{{blog.title_current}}</h1>
+      {{#isBlogTag}}
+      <p class="lead">
+        Visar taggade inlägg med {{blog.title_current}}. Visa
+        <a href="{{blog.url}}">alla inlägg här</a>.
+      </p>
+      {{/isBlogTag}} {{#isBlogDate}}<i>Visar inlägg från {{blog.archive_date}} {{/isBlogDate}}</i>
+    </div>
+    {{#blog.filter_tags}}
+    <div class="product-grid-header">
+      <div class="mr-3 mb-3">
+        <span class="mr-2">{{#lang}}Sort by tag{{/lang}}:</span>
+        <a href="{{blog.url}}"
+          class="product-grid-header-show {{^isBlogTag}}active{{/isBlogTag}}">{{#lang}}Latest{{/lang}}</a>
+        {{#available_tags}}
+        <a href="{{url}}" class="product-grid-header-show {{#current}}active{{/current}}">{{title}}</a>
+        {{/available_tags}}
+      </div>
+    </div>
+    {{/blog.filter_tags}}
+  
+    <div class="row">
+      {{#posts}}
+      <article class="post py-2 col-lg-6 col-sm-12 mb-5" itemscope itemtype="http://schema.org/BlogPosting">
+        <div data-aos="{{settings.aos_effect}}">
+          {{#hasImage}}
+          <div class="blog_post_image" itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+            <a href="{{url}}" class="d-block mb-4"><img loading="lazy" srcset="{{#img_srcset}}{{image}}{{/img_srcset}}" src="{{image}}" alt="{{title}}" class="img-fluid bloglist" /></a>
+            <meta itemprop="url" content="{{image}}" />
+            <meta itemprop="width" content="500" />
+            <meta itemprop="height" content="500" />
+          </div>
+          {{/hasImage}}
+  
+          <div class="blog_post_details">
+            <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+              <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+                <meta itemprop="url" content="{{#assets}}logo.png{{/assets}}" />
+                <meta itemprop="width" content="150" />
+                <meta itemprop="height" content="150" />
+              </div>
+              <meta itemprop="name" content="{{shop.name}}" />
+            </div>
+  
+            <p class="opacity-8 text-sm mb-0">
+              <meta itemprop="datePublished dateModified" content="{{date}}" />
+              <span class="text-uppercase text-xs mr-1">{{date_pretty}}</span>
+              <span class="text-xs" itemprop="author">av {{author}}</span>
+            </p>
+          </div>
+          <h2 class="h5 mb-2" itemprop="headline mainEntityOfPage">
+            <a href="{{url}}" class="color-text-base">{{title}}</a>
+          </h2>
+  
+          <div class="blog_post_content" itemprop="articleBody">{{&content_short}}</div>
+  
+          <a class="font-weight-bold" href="{{url}}">{{#lang}}Read More{{/lang}}</a>
+        </div>
+      </article>
+      {{/posts}}
+    </div>
+  </section>

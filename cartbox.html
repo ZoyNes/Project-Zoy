@@ -1,0 +1,105 @@
+<!-- Sidebar Cart Modal-->
+<div id="sidebarCart" tabindex="-1" role="dialog" class="modal fade modal-right cart-sidebar">
+    <div role="document" class="modal-dialog">
+      <div class="modal-content sidebar-cart-content">
+        <div class="modal-header pb-0 border-0">
+          <h3 class="ml-3 color-text-base">{{#lang}}Cart{{/lang}}</h3>
+          <button type="button" data-dismiss="modal" aria-label="{{#lang}}Close{{/lang}}"
+            class="close modal-close close-rotate">
+            <svg class="svg-icon w-3rem h-3rem svg-icon-light align-middle">
+              <use xlink:href="#close-1"></use>
+            </svg>
+          </button>
+        </div>
+        <div class="modal-body sidebar-cart-body">
+  
+          <!-- Cart messages -->
+          <div class="qs-cart-message"></div>
+  
+          <!-- Empty cart snippet-->
+          <!-- In case of empty cart - display this snippet + remove .d-none-->
+          <div class="qs-cart-empty {{^basket.isEmpty}}d-none{{/basket.isEmpty}} text-center mb-5">
+            <svg class="svg-icon w-3rem h-3rem svg-icon-light mb-4 opacity-7">
+              <use xlink:href="#retail-bag-1"></use>
+            </svg>
+            <p>{{#lang}}Your cart is empty, but doesn't have to be..{{/lang}}</p>
+          </div>
+  
+          <!-- Empty cart snippet end-->
+          <div class="sidebar-cart-product-wrapper qs-cart-update">
+  
+            <div id="cartitem-clone" class="navbar-cart-product clone hide">
+              <input type="hidden" class="navbar-cart-product-id" value="" />
+              <div class="d-flex align-items-center">
+                <a class="navbar-cart-product-url pr-2" href="#">
+                  <img loading="lazy" src="" alt="" class="navbar-cart-product-image img-fluid navbar-cart-product-image" />
+                </a>
+                <div class="flex-grow-1">
+                  <a href="#" class="navbar-cart-product-link color-text-base"></a>
+                  <strong class="navbar-cart-product-price product-price d-block text-sm"></strong>
+                  <div class="d-flex max-w-100px">
+                    <div class="btn btn-items btn-items-decrease text-center">-</div>
+                    <input type="text" value="1" class="navbar-cart-product-qty form-control text-center input-items" />
+                    <div class="btn btn-items btn-items-increase text-center">+</div>
+                  </div>
+                </div>
+                <button class="qs-cart-delete btn" data-pid="">
+                  <svg class="svg-icon sidebar-cart-icon color-text-base opacity-7">
+                    <use xlink:href="#bin-1"></use>
+                  </svg>
+                </button>
+              </div>
+            </div>
+  
+            {{#basket.items}}
+            <div id="CARTITEM{{item.id}}" class="navbar-cart-product qs-cart-item">
+              <input type="hidden" class="navbar-cart-product-id qs-cart-pid" value="{{item.id}}" />
+              <div class="d-flex align-items-center">
+                <a class="navbar-cart-product-url pr-2" href="{{item.url}}">
+                  <img loading="lazy" srcset="{{#img_srcset}}{{#img}}{{item.firstimage}}_80x80{{/img}}{{/img_srcset}}" src="{{#img}}{{item.firstimage}}_80x80{{/img}}" alt="{{item.title}}"
+                    class="navbar-cart-product-image img-fluid navbar-cart-product-image" />
+                </a>
+                <div class="flex-grow-1 qs-cart-item-productlink">
+                  <a href="{{item.url}}" class="navbar-cart-product-link color-text-base">
+                    {{item.title}}
+                  </a>
+                  {{#is_variant}}<small>{{variant_name}}</small>{{/is_variant}}
+                  {{^user.logged_out_hide_prices}}
+                  <strong class="navbar-cart-product-price product-price d-block text-sm">{{item.price}}</strong>
+                  {{/user.logged_out_hide_prices}}
+                  <div class="d-flex max-w-100px">
+                    <div class="btn btn-items btn-items-decrease text-center">-</div>
+                    <input type="text" value="{{qty}}"
+                      class="qs-cart-qty navbar-cart-product-qty form-control text-center input-items" />
+                    <div class="btn btn-items btn-items-increase text-center">+</div>
+                  </div>
+                </div>
+                <button class="qs-cart-delete btn" data-pid="{{item.id}}">
+                  <svg class="svg-icon sidebar-cart-icon color-text-base opacity-7">
+                    <use xlink:href="#bin-1"></use>
+                  </svg>
+                </button>
+  
+              </div>
+            </div>
+            {{/basket.items}}
+  
+          </div>
+        </div>
+        <div class="modal-footer sidebar-cart-footer shadow color-text-base">
+          <div class="w-100">
+            <h5 class="mb-2 mb-lg-4">
+              {{#lang}}Total{{/lang}}: 
+              <span
+                class="float-right navbar-cart-totals">{{basket.total_amount}}</span>
+          </h5>   
+          <a href="{{paylink}}" title="{{#lang}}Checkout{{/lang}}" class="w-100">
+              <button class="btn-height-large navbar-checkout-btn border-0 mb-2 mb-lg-4 btn btn-dark btn-block {{#basket.isEmpty}}disabled{{/basket.isEmpty}}">{{#lang}}Checkout{{/lang}}</button>
+          </a>
+          <a href="#" data-dismiss="modal" class="btn btn-block color-text-base">{{#lang}}Continue Shopping{{/lang}}</a>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

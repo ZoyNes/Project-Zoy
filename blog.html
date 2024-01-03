@@ -1,0 +1,11 @@
+<section class="hero {{#settings.use_breadcrumbs}}py-0 pb-4{{/settings.use_breadcrumbs}}{{^settings.use_breadcrumbs}}py-4{{/settings.use_breadcrumbs}}">
+    <div class="container">
+      {{#is_list}}
+          {{>blog_list}}
+      {{/is_list}}
+      
+      {{#is_post}}
+          {{>blog_post}}
+      {{/is_post}}
+    </div>
+  </section>

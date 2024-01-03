@@ -1,0 +1,22 @@
+{{#is_content_withimage}}
+<section data-qb-element="content_withimage" class="pt-3 pt-lg-4 {{#element.use_fullscreen}}container-fluid{{/element.use_fullscreen}} {{^element.use_fullscreen}}container{{/element.use_fullscreen}}">
+    <div class="row align-items-center" data-aos="{{settings.aos_effect}}">
+        <div class="col-12 col-lg-6 mb-5 text-center {{element.style}}">
+            <p data-qb-setting="toptext" class="font-weight-bold mb-1" style="color: {{element.toptext_color}};">{{#lang}}{{element.toptext}}{{/lang}}</p>
+            <h3 data-qb-setting="title" style="color: {{element.title_color}};">{{#lang}}{{element.title}}{{/lang}}</h3>
+            <p data-qb-setting="text" class="lead" style="color: {{element.text_color}};">{{#lang}}{{element.text}}{{/lang}}</p>
+            {{#element.btn_text}}
+                <a data-qb-setting="btn_text" href="{{#lang}}{{element.url}}{{/lang}}"
+                    class="btn btn-dark border-0"
+                    style="background-color: {{element.btn_bgcolor}}; color: {{element.btn_textcolor}};">{{#lang}}{{element.btn_text}}{{/lang}}
+                </a>
+            {{/element.btn_text}}
+        </div>
+        <div class="col-12 col-lg-6 order-2 text-center">
+        {{#element.url}}<a href="{{#lang}}{{element.url}}{{/lang}}">{{/element.url}}
+            <img loading="lazy" class="img-fluid start-bannerwithimg-img" ix-src="{{element.image}}" ix-sizes="auto" alt="{{#element.title}}{{element.title}}{{/element.title}}{{#element.title}}{{/element.title}}" />
+            {{#element.url}}</a>{{/element.url}}
+        </div>
+    </div>    
+</section>
+{{/is_content_withimage}}

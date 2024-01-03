@@ -1,0 +1,181 @@
+
+{{#is_banners}}
+
+<style>
+
+  {{#element.image_desktop_height}}
+  .image-caption.image-caption-{{number}} .card-scale {
+    height: {{element.image_desktop_height}}px;
+  }
+  {{/element.image_desktop_height}}
+  
+  {{#element.image_mobile_height}}
+  @media(max-width:992px) {
+    .image-caption.image-caption-{{number}} .card-scale {
+      height: {{element.image_mobile_height}}px;
+    }
+  }
+  {{/element.image_mobile_height}}
+</style>
+
+<section
+  data-qb-element="banners"
+  class="{{#element.use_fullscreen}}container-fluid{{/element.use_fullscreen}} {{^element.use_fullscreen}}container{{/element.use_fullscreen}} pt-2 pt-lg-4">
+  <div class="docs-item imageoverlay image-caption image-caption-{{number}}">
+    <div class="row">
+
+      <div
+        class="col-12 mb-2 {{#element.use_fullscreen}}px-0{{/element.use_fullscreen}} {{#element.use_banner2}}{{^element.use_banner3}}col-md-6{{/element.use_banner3}}{{#element.use_banner3}}col-md-4{{/element.use_banner3}}{{/element.use_banner2}}">
+        {{#element.image1_url}}
+        <a href="{{#lang}}{{element.image1_url}}{{/lang}}" class="d-block tile-link {{#element.image_desktop_height}}h-100{{/element.image_desktop_height}}">
+          {{/element.image1_url}}
+          <div class="card card-scale shadow-none text-center {{element.content1_style}}">
+            <div class="img-scale-container h-100">
+              <img loading="lazy" ix-src="{{element.image1}}" ix-sizes="auto" alt="{{shop.name}}" class="card-img img-scale w-100 {{#element.image_desktop_height}}h-100{{/element.image_desktop_height}}" />
+            </div>
+            <div class="card-img-overlay d-flex {{#element.image1_textposition}}{{element.image1_textposition}}{{/element.image1_textposition}}{{^element.image1_textposition}}align-items-center{{/element.image1_textposition}}">
+              <div class="text-center w-100 overlay-content">
+                <h2 data-qb-setting="image1_text" class="{{element.image1_textsize}} font-weight-bold banner-text text-center mb-0">
+                  {{#lang}}{{element.image1_text}}{{/lang}}
+                </h2>
+              </div>
+            </div>
+          </div>
+          {{#element.image1_url}}
+        </a>
+        {{/element.image1_url}}
+      </div>
+
+      {{#element.use_banner2}}
+      <div
+        class="col-12 mb-2 {{#element.use_fullscreen}}px-0{{/element.use_fullscreen}} {{^element.use_banner3}}col-md-6{{/element.use_banner3}}{{#element.use_banner3}}col-md-4{{/element.use_banner3}}">
+        {{#element.image2_url}}
+        <a href="{{#lang}}{{element.image2_url}}{{/lang}}" class="d-block tile-link {{#element.image_desktop_height}}h-100{{/element.image_desktop_height}}">
+          {{/element.image2_url}}
+          <div class="card card-scale shadow-none text-center {{element.content2_style}}">
+            <div class="img-scale-container h-100">
+              <img loading="lazy" ix-src="{{element.image2}}" ix-sizes="auto" alt="{{shop.name}}" class="card-img img-scale w-100 {{#element.image_desktop_height}}h-100{{/element.image_desktop_height}}" />
+            </div>
+            <div class="card-img-overlay d-flex {{#element.image2_textposition}}{{element.image2_textposition}}{{/element.image2_textposition}}{{^element.image2_textposition}}align-items-center{{/element.image2_textposition}}">
+              <div class="text-center w-100 overlay-content">
+                <h2 data-qb-setting="image2_text" class="{{element.image2_textsize}} font-weight-bold banner-text text-center mb-0">
+                  {{#lang}}{{element.image2_text}}{{/lang}}
+                </h2>
+              </div>
+            </div>
+          </div>
+          {{#element.image2_url}}
+        </a>
+        {{/element.image2_url}}
+      </div>
+      {{/element.use_banner2}}
+
+      {{#element.use_banner3}}
+      <div class="col-12 col-md-4 mb-2 {{#element.use_fullscreen}}px-0{{/element.use_fullscreen}}">
+        {{#element.image3_url}}
+        <a href="{{#lang}}{{element.image3_url}}{{/lang}}" class="d-block tile-link {{#element.image_desktop_height}}h-100{{/element.image_desktop_height}}">
+          {{/element.image3_url}}
+          <div class="card card-scale mb-2 shadow-none text-center {{element.content3_style}}">
+            <div class="img-scale-container h-100">
+              <img loading="lazy" ix-src="{{element.image3}}" ix-sizes="auto" alt="{{shop.name}}" class="card-img img-scale w-100 {{#element.image_desktop_height}}h-100{{/element.image_desktop_height}}" />
+            </div>
+            <div class="card-img-overlay d-flex {{#element.image3_textposition}}{{element.image3_textposition}}{{/element.image3_textposition}}{{^element.image3_textposition}}align-items-center{{/element.image3_textposition}}">
+              <div class="text-center w-100 overlay-content">
+                <h2 data-qb-setting="image3_text" class="{{element.image3_textsize}} font-weight-bold banner-text text-center mb-0">
+                  {{#lang}}{{element.image3_text}}{{/lang}}
+                </h2>
+              </div>
+            </div>
+          </div>
+          {{#element.image3_url}}
+        </a>
+        {{/element.image3_url}}
+      </div>
+      {{/element.use_banner3}}
+
+    </div>
+  </div>
+</section>
+{{/is_banners}}
+
+<!-- Banners variation -->
+{{#is_banners_variation1}}
+<section
+  class="{{#element.use_fullscreen}}container-fluid{{/element.use_fullscreen}} {{^element.use_fullscreen}}container{{/element.use_fullscreen}} pt-2 pt-lg-4">
+  <div class="docs-item imageoverlay image-caption image-caption-{{number}}">
+    <div class="row">
+      <div
+        class="col-12 mb-2 {{#element.use_banner2}}{{^element.use_banner3}}col-md-6{{/element.use_banner3}}{{#element.use_banner3}}col-md-7{{/element.use_banner3}}{{/element.use_banner2}}">
+        {{#element.image1_url}}
+        <a href="{{#lang}}{{element.image1_url}}{{/lang}}" class="d-block tile-link {{#element.image_desktop_height}}h-100{{/element.image_desktop_height}}">
+          {{/element.image1_url}}
+          <div class="card card-scale shadow-none text-center {{element.content1_style}}">
+            <div class="img-scale-container h-100">
+              <img loading="lazy" ix-src="{{element.image1}}" ix-sizes="auto" alt="{{shop.name}}" class="card-img img-scale {{#element.image_desktop_height}}h-100{{/element.image_desktop_height}}" />
+            </div>
+            <div class="card-img-overlay d-flex align-items-center">
+              <div class="text-center w-100 overlay-content">
+                <h2 class="{{element.image1_textsize}} font-weight-bold banner-text text-center mb-0">
+                  {{#lang}}{{element.image1_text}}{{/lang}}
+                </h2>
+              </div>
+            </div>
+          </div>
+          {{#element.image1_url}}
+        </a>
+        {{/element.image1_url}}
+      </div>
+      
+      <div class="col col-md-5">
+      {{#element.use_banner2}}
+      <div
+        class="col-12 mb-2 {{^element.use_banner3}}col-md-6{{/element.use_banner3}}{{#element.use_banner3}}col-md-12{{/element.use_banner3}}">
+        {{#element.image2_url}}
+        <a href="{{#lang}}{{element.image2_url}}{{/lang}}" class="d-block tile-link {{#element.image_desktop_height}}h-100{{/element.image_desktop_height}}">
+          {{/element.image2_url}}
+          <div class="card card-scale shadow-none text-center {{element.content2_style}}">
+            <div class="img-scale-container h-100">
+              <img loading="lazy" ix-src="{{element.image2}}" ix-sizes="auto" alt="{{shop.name}}" class="card-img img-scale {{#element.image_desktop_height}}h-100{{/element.image_desktop_height}}" />
+            </div>
+            <div class="card-img-overlay d-flex align-items-center">
+              <div class="text-center w-100 overlay-content">
+                <h2 class="{{element.image2_textsize}} font-weight-bold banner-text text-center mb-0">
+                  {{#lang}}{{element.image2_text}}{{/lang}}
+                </h2>
+              </div>
+            </div>
+          </div>
+          {{#element.image2_url}}
+        </a>
+        {{/element.image2_url}}
+      </div>
+      {{/element.use_banner2}}
+
+      {{#element.use_banner3}}
+      <div class="col-12 mb-2">
+        {{#element.image3_url}}
+        <a href="{{#lang}}{{element.image3_url}}{{/lang}}" class="d-block tile-link {{#element.image_desktop_height}}h-100{{/element.image_desktop_height}}">
+          {{/element.image3_url}}
+          <div class="card card-scale mb-2 shadow-none text-center {{element.content3_style}}">
+            <div class="img-scale-container h-100">
+              <img loading="lazy" ix-src="{{element.image3}}" ix-sizes="auto" alt="{{shop.name}}" class="card-img img-scale {{#element.image_desktop_height}}h-100{{/element.image_desktop_height}}" />
+            </div>
+            <div class="card-img-overlay d-flex align-items-center">
+              <div class="text-center w-100 overlay-content">
+                <h2 class="{{element.image3_textsize}} font-weight-bold banner-text text-center mb-0">
+                  {{#lang}}{{element.image3_text}}{{/lang}}
+                </h2>
+              </div>
+            </div>
+          </div>
+          {{#element.image3_url}}
+        </a>
+        {{/element.image3_url}}
+      </div>
+      {{/element.use_banner3}}
+      </div>
+
+    </div>
+  </div>
+</section>
+{{/is_banners_variation1}}

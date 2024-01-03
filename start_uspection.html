@@ -1,0 +1,70 @@
+{{#is_uspsection}}
+<section data-qb-element="uspsection" class="container py-3 position-relative start-uspsection overflow-hidden" style="background-color: {{element.usp_bgcolor}};">
+  <div class="row">
+    {{^element.usp1_hide}}
+    <div class="col {{element.usp_variation}}{{^element.usp_variation}}service-column{{/element.usp_variation}} my-2 text-nowrap">
+      <svg data-qb-setting="usp1_icon" class="svg-icon-base service-icon" style="color: {{element.usp_iconcolor}}">
+        <use xlink:href="#{{element.usp1_icon}}"></use>
+      </svg>
+      <div class="service-text">
+        <h6 data-qb-setting="usp1_title" class="text-sm mb-1">{{#lang}}{{element.usp1_title}}{{/lang}}</h6>
+        {{#element.usp1_description}}
+        <p data-qb-setting="usp1_description" class="opacity-7 font-weight-light text-sm mb-0 text-break">
+          {{#lang}}{{element.usp1_description}}{{/lang}}
+        </p>
+        {{/element.usp1_description}}
+      </div>
+    </div>
+    {{/element.usp1_hide}}
+
+    {{^element.usp2_hide}}
+    <div class="col {{element.usp_variation}}{{^element.usp_variation}}service-column{{/element.usp_variation}} my-2 text-nowrap">
+      <svg data-qb-setting="usp2_icon" class="svg-icon-base service-icon usp_iconcolor" style="color: {{element.usp_iconcolor}}">
+        <use xlink:href="#{{element.usp2_icon}}"></use>
+      </svg>
+      <div class="service-text">
+        <h6 data-qb-setting="usp2_title" class="text-sm mb-1">{{#lang}}{{element.usp2_title}}{{/lang}}</h6>
+        {{#element.usp2_description}}
+        <p data-qb-setting="usp2_description" class="opacity-7 font-weight-light text-sm mb-0 text-break">
+          {{#lang}}{{element.usp2_description}}{{/lang}}
+        </p>
+        {{/element.usp2_description}}
+      </div>
+    </div>
+    {{/element.usp2_hide}}
+
+    {{^element.usp3_hide}}
+    <div class="col {{element.usp_variation}}{{^element.usp_variation}}service-column{{/element.usp_variation}} my-2 text-nowrap">
+      <svg data-qb-setting="usp3_icon" class="svg-icon-base service-icon usp_iconcolor" style="color: {{element.usp_iconcolor}}">
+        <use xlink:href="#{{element.usp3_icon}}"></use>
+      </svg>
+      <div class="service-text">
+        <h6 data-qb-setting="usp3_title" class="text-sm mb-1">{{#lang}}{{element.usp3_title}}{{/lang}}</h6>
+        {{#element.usp3_description}}
+        <p data-qb-setting="usp3_description" class="opacity-7 font-weight-light text-sm mb-0 text-break">
+          {{#lang}}{{element.usp3_description}}{{/lang}}
+        </p>
+        {{/element.usp3_description}}
+      </div>
+    </div>
+    {{/element.usp3_hide}}
+
+    {{^element.usp4_hide}}
+    <div class="col {{element.usp_variation}}{{^element.usp_variation}}service-column{{/element.usp_variation}} my-2 text-nowrap">
+      <svg data-qb-setting="usp4_icon" class="svg-icon-base service-icon usp_iconcolor" style="color: {{element.usp_iconcolor}}">
+        <use xlink:href="#{{element.usp4_icon}}"></use>
+      </svg>
+      <div class="service-text">
+        <h6 data-qb-setting="usp4_title" class="text-sm mb-1">{{#lang}}{{element.usp4_title}}{{/lang}}</h6>
+        {{#element.usp4_description}}
+        <p data-qb-setting="usp4_description" class="opacity-7 font-weight-light text-sm mb-0 text-break">
+          {{#lang}}{{element.usp4_description}}{{/lang}}
+        </p>
+        {{/element.usp4_description}}
+      </div>
+    </div>
+    {{/element.usp4_hide}}
+
+  </div>
+</section>
+{{/is_uspsection}}

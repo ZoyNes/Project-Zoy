@@ -1,0 +1,131 @@
+{{#is_productgrid}}
+
+{{#element.img_maxheight}}
+{{#var_if}}{{element.rowsort}}=col-md-3 col-6=270x{{element.img_maxheight}}|save:imagesize{{/var_if}}
+{{#var_if}}{{element.rowsort}}=col-md-3 col-12=270x{{element.img_maxheight}}|save:imagesize{{/var_if}}
+{{#var_if}}{{element.rowsort}}=col-md-4 col-6=350x{{element.img_maxheight}}|save:imagesize{{/var_if}}
+{{#var_if}}{{element.rowsort}}=col-md-4 col-12=350x{{element.img_maxheight}}|save:imagesize{{/var_if}}
+{{#var_if}}{{element.rowsort}}=col-md-6 col-6=500x{{element.img_maxheight}}|save:imagesize{{/var_if}}
+{{#var_if}}{{element.rowsort}}=col-md-6 col-12=500x{{element.img_maxheight}}|save:imagesize{{/var_if}}
+{{/element.img_maxheight}}
+
+{{^element.img_maxheight}}
+{{#var_if}}{{element.rowsort}}=col-md-3 col-6=270x270|save:imagesize{{/var_if}}
+{{#var_if}}{{element.rowsort}}=col-md-3 col-12=270x270|save:imagesize{{/var_if}}
+{{#var_if}}{{element.rowsort}}=col-md-4 col-6=350x350|save:imagesize{{/var_if}}
+{{#var_if}}{{element.rowsort}}=col-md-4 col-12=350x350|save:imagesize{{/var_if}}
+{{#var_if}}{{element.rowsort}}=col-md-6 col-6=500x500|save:imagesize{{/var_if}}
+{{#var_if}}{{element.rowsort}}=col-md-6 col-12=500x500|save:imagesize{{/var_if}}
+{{/element.img_maxheight}}
+
+<section data-qb-element="productgrid" class="container pt-2 pt-lg-4 text-break">
+  <div class="row">
+    {{#element.products}}
+
+    <div class="{{element.rowsort}} product" data-pid="{{ product.id }}" data-s-price="{{^user.logged_out_hide_prices}}{{ product.price_raw }}{{/user.logged_out_hide_prices}}"
+      data-s-title="{{ product.title }}"  data-aos="{{settings.aos_effect}}" data-aos-delay="0">
+        <div></div>
+        <div class="product-image mb-2 mb-md-3">
+          <a href="{{product.url}}">
+
+            <div class="{{#settings.use_swapimage}}product-swap-image{{/settings.use_swapimage}} text-center {{#product.has_secondimage}}product-swap-image-effect{{/product.has_secondimage}}">
+              <img
+                srcset="{{#img_srcset}}{{#img}}{{product.firstimage}}_{{#var_get}}imagesize{{/var_get}}{{#element.img_crop}}_crop{{/element.img_crop}}{{/img}}{{/img_srcset}}"
+                src="{{#img}}{{product.firstimage}}_{{#var_get}}imagesize{{/var_get}}{{#element.img_crop}}_crop{{/element.img_crop}}{{/img}}"
+                alt="{{product.title}}"
+                class="{{#settings.use_swapimage}}product-swap-image-front{{/settings.use_swapimage}} mx-auto mw-100 mh-100" />
+              {{#settings.use_swapimage}}
+              {{#product.has_secondimage}}
+              <img
+                srcset="{{#img_srcset}}{{#img}}{{product.secondimage}}_{{#var_get}}imagesize{{/var_get}}{{#element.img_crop}}_crop{{/element.img_crop}}{{/img}}{{/img_srcset}}"
+                src="{{#img}}{{product.secondimage}}_{{#var_get}}imagesize{{/var_get}}{{#element.img_crop}}_crop{{/element.img_crop}}{{/img}}"
+                alt="{{product.title}}" class="product-swap-image-back mx-auto mw-100 mh-100" />
+              {{/product.has_secondimage}}
+              {{^product.has_secondimage}}
+              <img
+                srcset="{{#img_srcset}}{{#img}}{{product.firstimage}}_{{#var_get}}imagesize{{/var_get}}{{#element.img_crop}}_crop{{/element.img_crop}}{{/img}}{{/img_srcset}}"
+                src="{{#img}}{{product.firstimage}}_{{#var_get}}imagesize{{/var_get}}{{#element.img_crop}}_crop{{/element.img_crop}}{{/img}}"
+                alt="{{product.title}}" class="product-swap-image-back mx-auto mw-100 mh-100" />
+              {{/product.has_secondimage}}
+              {{/settings.use_swapimage}}
+            </div>
+          </a>
+
+          {{#settings.list_show_buybtn}}
+          {{^user.logged_out_hide_add_to_cart}}
+          <div class="product-hover-overlay">
+
+            {{^product.soldOut}}
+              {{^product.hasOptions}}
+              <form class="qs-cart w-100 text-center" method="post">
+                <input type="hidden" class="qs-cart-pid" value="{{product.id}}">
+                <input type="hidden" class="qs-cart-price" value="{{^user.logged_out_hide_prices}}{{product.price_raw}}{{/user.logged_out_hide_prices}}">
+                <input name="qs-cart-qty" type="hidden" class="qs-cart-qty qty-picker" value="1" />
+
+                <button type="submit" name="add" class="text-dark text-hover-primary border-0 bg-transparent qs-cart-submit w-100 text-center">
+                  <svg class="svg-icon svg-icon-heavy d-md-none">
+                    <use xlink:href="#{{settings.icon_cart1}}"></use>
+                  </svg>
+                  <span class="text-dark text-base d-md-inline">{{settings.product_ctabtn_text}}</span>
+                </button>
+              </form>
+              {{/product.hasOptions}}
+
+              {{#product.hasOptions}}
+              <a href="{{product.url}}" class="text-base w-100 text-center text-dark">
+                {{settings.product_moreOptions_text}}
+              </a>
+              {{/product.hasOptions}}
+            {{/product.soldOut}}
+
+            {{#product.soldOut}}
+            <a href="{{product.url}}" class="text-base text-dark w-100 text-center">{{#lang}}Go to product{{/lang}}</a>
+            {{/product.soldOut}}
+
+          </div>
+          {{/user.logged_out_hide_add_to_cart}}
+          {{/settings.list_show_buybtn}}
+        </div>
+        <div class="position-relative {{settings.list_producttitle_align}}">
+          <h3 class="producttitle-font-size mb-1">
+            <a class="color-text-base" href="{{product.url}}">{{#lang}}{{product.title}}{{/lang}}</a>
+          </h3>
+
+          <span class="text-base{{#product.soldOut}} text-soldout{{/product.soldOut}}">
+            {{#product.soldOut}}
+              {{#settings.list_show_stock}}
+                {{settings.productlist_soldout_text}}
+              {{/settings.list_show_stock}}
+            {{/product.soldOut}}
+
+            {{^product.soldOut}}
+            {{^user.logged_out_hide_prices}}
+            {{#settings.list_show_price}}
+            {{#product.has_before_price}}
+            <span class="opacity-7"><del class="product-before-price">{{product.before_price}}</del></span>
+            {{/product.has_before_price}}
+            <span class="product-price">{{product.price}}</span>
+            {{/settings.list_show_price}}
+            {{/user.logged_out_hide_prices}}
+            {{/product.soldOut}}
+          </span>
+
+          {{#settings.productpage_show_stock}}
+          <div class="product-stars text-xs d-none d-sm-inline">
+            {{^product.soldOut}}
+            {{#settings.list_show_stock}}
+            <span data-in-stock-text="{{settings.productpage_txt_instock}}"
+              data-out-of-stock-text="{{settings.productpage_txt_outofstock}}"
+              data-combination-not-exist-text="{{#lang}}Variant does not exist{{/lang}}" class="text-success"><i
+                class="fa fa-check mr-1"></i> {{settings.productpage_txt_instock}}</span>
+            {{/settings.list_show_stock}}
+            {{/product.soldOut}}
+          </div>
+          {{/settings.productpage_show_stock}}
+
+        </div>
+    </div>
+    {{/element.products}}
+  </div>
+</section>
+{{/is_productgrid}}

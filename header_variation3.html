@@ -1,0 +1,176 @@
+<!-- Section: Main Header -->
+<nav
+  data-qb-area="header" data-qb-element=""
+  class="navbar-expand-lg navbar-position navbar-light py-0 header-bgcolor {{#settings.header_mobile_fixed}}fixed-mobile{{/settings.header_mobile_fixed}}" {{#settings.header_bgcolor}}style="background-color: {{settings.header_bgcolor}} !important;"{{/settings.header_bgcolor}}>
+  <div class="container">
+    <div class="row">
+      <div class="navbar col-12 justify-content-between py-0">
+        <div class="list-inline-item order-0 d-lg-none col p-0">
+          <a href="#" data-toggle="modal" data-target="#sidebarLeft" class="color-text-base header-textcolor">
+            <svg class="svg-icon navbar-icon header-textcolor mainmenu-icon">
+              <use xlink:href="#menu-hamburger-1"></use>
+            </svg>
+          </a>
+        </div>
+        
+        <div class="col col-6 col-lg-auto m-0 p-0 order-1 order-lg-2 text-center">
+          <a data-qb-element="use_logo" href="{{shop.url}}" title="{{shop.name}}"
+            class="navbar-brand text-center text-md-left py-2 px-0">
+            {{^settings.use_logo}}{{shop.name}}{{/settings.use_logo}}
+            {{#settings.use_logo}}<img alt="{{shop.name}}" class="img-fluid img-logo" srcset="{{#img_srcset}}{{#assets}}logo.png{{/assets}}{{/img_srcset}}" src="{{#assets}}logo.png{{/assets}}">{{/settings.use_logo}}
+          </a>
+        </div>
+        
+        <ul class="order-2 col navbar-bg mainmenu_font_size d-none d-lg-block navbar-nav d-none d-lg-flex mt-lg-0 py-3 flex-wrap justify-content-center px-0 lh-1-5">
+      {{#linklist.main}}
+      {{^hasChildren}}
+      <li class="nav-item {{#current}}active{{/current}}">
+        <a href="{{url}}" title="{{name}}" class="nav-link pl-0 {{#current}}active{{/current}}">{{name}}</a>
+      </li>
+      {{/hasChildren}}
+      {{#hasChildren}}
+      <li class="nav-item has-dropdown position-relative {{#settings.dropdown_click}} d-flex justify-content-center align-items-center {{/settings.dropdown_click}} {{^settings.dropdown_click}} on-hover {{/settings.dropdown_click}}">
+        {{^settings.dropdown_click}}
+        <a href="{{url}}" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle pl-0">{{name}}</a>
+        {{/settings.dropdown_click}}
+        {{#settings.dropdown_click}}
+        <a href="{{url}}" class="nav-link px-1">{{name}}</a>
+        <i id="firstmenu" roll="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="cursor-pointer dropdown-toggle dropdown-btn pr-3 ml-0" style="color: {{settings.menu_textcolor}};"></i>
+        {{/settings.dropdown_click}}
+        
+        <ul class="dropdown-menu dropdown-menu-first" aria-labelledby="firstmenu">
+          {{#children}}
+          {{#hasChildren2}}
+          <li class="dropdown-submenu {{^settings.dropdown_click}}on-hover{{/settings.dropdown_click}} position-relative d-flex justify-content-center align-items-center
+          dropdown-list__item {{^settings.header_menu_subright}}dropdown-list__item--inline {{/settings.header_menu_subright}}">
+            <div class="d-flex align-items-center w-100 dropdown-list__content">
+              <a href="{{url}}" aria-expanded="false" class="dropdown-item {{#current}}active{{/current}}">{{name}}</a>
+              <i id="categoryDropdown{{id}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" class="dropdown-toggle dropdown-btn pr-3 pl-2 cursor-pointer"></i>
+            </div>
+
+            <ul aria-labelledby="categoryDropdown{{id}}"
+              class="dropdown-menu {{#settings.header_menu_subright}}dropdown-menu-alignright{{/settings.header_menu_subright}}
+              dropdown-list__sub-menu {{^settings.header_menu_subright}}dropdown-list__sub-menu--inline{{/settings.header_menu_subright}}">
+              {{#children}}
+
+              {{#hasChildren3}}
+                  <li class="dropdown-submenu {{^settings.dropdown_click}}on-hover{{/settings.dropdown_click}} position-relative d-flex justify-content-center align-items-center
+                  dropdown-list__item {{^settings.header_menu_subright}}dropdown-list__item--inline {{/settings.header_menu_subright}}">
+                      <div class="d-flex align-items-center w-100 dropdown-list__content">
+                        <a href="{{url}}" aria-expanded="false" class="dropdown-item {{#current}}active{{/current}}">{{name}}</a>
+                        <i id="categoryDropdown{{id}}" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" class="dropdown-toggle dropdown-btn pr-3 pl-2 cursor-pointer"></i>
+                      </div>
+    
+                      <ul aria-labelledby="categoryDropdown{{id}}"
+                        class="dropdown-menu {{#settings.header_menu_subright}}dropdown-menu-alignright{{/settings.header_menu_subright}}
+                        dropdown-list__sub-menu {{^settings.header_menu_subright}}dropdown-list__sub-menu--inline{{/settings.header_menu_subright}}">
+                        {{#children}}
+                          {{#hasChildren4}}
+                            <li><a href="{{url}}" class="{{#current}}active{{/current}} dropdown-item dropdown-sub-header">{{name}}</a></li>
+                            {{#children}}
+                              <li><a href="{{url}}" class="ml-2 {{#current}}active{{/current}} dropdown-item">{{name}}</a></li>
+                            {{/children}}
+                          {{/hasChildren4}}
+                          {{^hasChildren4}}
+                            <li><a href="{{url}}" class="{{#current}}active{{/current}} dropdown-item">{{name}}</a></li>
+                          {{/hasChildren4}}
+                        {{/children}}
+                      </ul>
+                  </li>
+              {{/hasChildren3}}
+              
+              {{^hasChildren3}}
+                <li><a href="{{url}}" class="{{#current}}active{{/current}} dropdown-item">{{name}}</a></li>
+              {{/hasChildren3}}
+              
+            {{/children}}
+            </ul>
+          </li>
+          {{/hasChildren2}}
+
+          {{^hasChildren2}}
+          <li><a class="dropdown-item {{#current}}active{{/current}}" href="{{url}}">{{name}}</a></li>
+          {{/hasChildren2}}
+
+          {{/children}}
+
+        </ul>
+      </li>
+      {{/hasChildren}}
+      {{/linklist.main}}
+    </ul>
+        
+        <ul class="list-inline order-2 order-lg-3 mb-0 text-right col col-lg-auto p-0 d-flex align-items-center justify-content-end">
+        {{#settings.header_showsearch}}
+          <li data-qb-element="header_showsearch" class="list-inline-item d-lg-inline-block d-none mr-2">
+            <a href="#" id="headertwo_searchicon" class="p-0 d-flex align-items-center color-text-base header-textcolor mr-2">
+              <svg class="svg-icon navbar-icon color-text-base header-textcolor" style="height: 22px; width: 22px;">
+                <use xlink:href="#search-1"></use>
+              </svg>
+            </a>
+          </li>
+        {{/settings.header_showsearch}}
+        {{#shop.app.customerlogin}}
+          {{#settings.header_showlogin}}
+          <li data-qb-element="header_showlogin" class="list-inline-item d-lg-inline-block d-none mr-0">
+            <a href="{{login_endpoint}}" class="p-0 d-flex align-items-center color-text-base header-textcolor mr-2">
+              <svg class="svg-icon navbar-icon color-text-base header-textcolor">
+                <use xlink:href="#avatar-1"></use>
+              </svg>
+              <span
+                class="pl-1">{{#user.logged_in}}{{#lang}}Account{{/lang}}{{/user.logged_in}}{{^user.logged_in}}{{settings.header_logintext}}{{/user.logged_in}}</span>
+            </a>
+          </li>
+          {{/settings.header_showlogin}}
+          {{/shop.app.customerlogin}}
+          
+          {{#shop.app.wishlists}}
+          {{#settings.header_showwishlist}}
+          <li data-qb-element="header_showwishlist" class="list-inline-item d-lg-inline-block d-none mr-0">
+            <a href="{{wishlist_endpoint}}" class="position-relative d-flex align-items-center color-text-base header-textcolor mr-2">
+              <svg class="svg-icon navbar-icon color-text-base header-textcolor">
+                <use xlink:href="#heart-1"></use>
+              </svg>
+              <span class="pl-1">{{settings.header_wishlisttext}}</span>
+            </a>
+          </li>
+          {{/settings.header_showwishlist}}
+          {{/shop.app.wishlists}}
+          
+          {{^user.logged_out_hide_add_to_cart}}
+           <li data-qb-element="icon_cart1" class="list-inline-item">
+            <a href="#" data-toggle="modal" data-target="#sidebarCart"
+              class="position-relative text-hover-primary align-items-center qs-cart-view">
+              <svg class="svg-icon navbar-icon color-text-base header-textcolor">
+                <use xlink:href="#{{settings.icon_cart1}}"></use>
+              </svg>
+              {{#settings.header_showcartbubble}}
+              <div class="navbar-icon-badge icon-count text-white primary-bg basket-count-items {{#basket.isEmpty}}icon-count-hidden{{/basket.isEmpty}}">{{basket.items_count}}</div>
+              {{/settings.header_showcartbubble}}
+              <span class="d-none d-sm-inline color-text-base header-textcolor">{{settings.header_carttext}}
+                {{^settings.header_showcartbubble}}<span
+                  class="basket-count-items">({{basket.items_count}})</span>{{/settings.header_showcartbubble}}</span>
+            </a>
+          </li>
+          {{/user.logged_out_hide_add_to_cart}}
+          
+        </ul>
+          
+      </div>
+        <form action="{{search_endpoint}}" id="headertwo_searchinput" method="get"
+          class="order-lg-1 my-lg-0 flex-grow-1 col-4 top-searchbar-variation3 mw-100 text-center mx-auto px-2 pb-4" style="display: none">
+          <div class="search-wrapper input-group">
+            <input type="text" name="s" placeholder="{{settings.header_searchtext}}" aria-label="Search"
+              aria-describedby="button-search-desktop" class="form-control pl-3 border-0" />
+            <div class="input-group-append ml-0">
+              <button id="button-search-desktop" type="submit" class="btn py-0 border-0 header-textcolor">
+                {{#lang}}Search{{/lang}}
+              </button>
+            </div>
+          </div>
+        </form>
+    </div>
+    
+  </div>
+</nav>
+<!-- /Section: Main Header -->

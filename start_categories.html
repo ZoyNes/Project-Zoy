@@ -1,0 +1,84 @@
+{{#is_categories}}
+
+<section data-qb-element="categories" class="container pt-2 pt-lg-4">
+  <div class="row">
+    {{#element.category1}}
+    {{^element.category1_hide}}
+    <div class="col-6 col-md-flex">
+      <div data-aos="{{settings.aos_effect}}" class="card-scale">
+        {{#category.image}}
+        <div class="img-scale-container mb-3">
+          <img loading="lazy" ix-src="{{category.image}}?auto=format" ix-sizes="auto" alt="{{shop.name}} > {{category.name}}">
+        </div>
+        {{/category.image}}
+
+        <h3 class="text-center h5">
+          <a href="{{category.url}}"
+            class="stretched-link">{{#element.title1_show}}{{#lang}}{{category.name}}{{/lang}}{{/element.title1_show}}</a>
+        </h3>
+
+      </div>
+    </div>
+    {{/element.category1_hide}}
+    {{/element.category1}}
+    {{#element.category2}}
+    {{^element.category2_hide}}
+    <div class="col-6 col-md-flex">
+      <div data-aos="{{settings.aos_effect}}" class="card-scale">
+        {{#category.image}}
+        <div class="img-scale-container mb-3">
+          <img loading="lazy" ix-src="{{category.image}}?auto=format" ix-sizes="auto" alt="{{shop.name}} > {{category.name}}">
+        </div>
+        {{/category.image}}
+
+        <h3 class="text-center h5">
+          <a href="{{category.url}}"
+            class="stretched-link">{{#element.title2_show}}{{#lang}}{{category.name}}{{/lang}}{{/element.title2_show}}</a>
+        </h3>
+
+      </div>
+    </div>
+    {{/element.category2_hide}}
+    {{/element.category2}}
+    {{#element.category3}}
+    {{^element.category3_hide}}
+    <div class="col-6 col-md-flex">
+      <div data-aos="{{settings.aos_effect}}" class="card-scale">
+        {{#category.image}}
+        <div class="img-scale-container mb-3">
+          <img loading="lazy" ix-src="{{category.image}}?auto=format" ix-sizes="auto" alt="{{shop.name}} > {{category.name}}">
+        </div>
+        {{/category.image}}
+
+        <h3 class="text-center h5">
+          <a href="{{category.url}}"
+            class="stretched-link">{{#element.title3_show}}{{#lang}}{{category.name}}{{/lang}}{{/element.title3_show}}</a>
+        </h3>
+
+      </div>
+    </div>
+    {{/element.category3_hide}}
+    {{/element.category3}}
+    {{#element.category4}}
+    {{^element.category4_hide}}
+    <div class="col-6 col-md-flex">
+        <div data-aos="{{settings.aos_effect}}" class="card-scale">
+        {{#category.image}}
+        <div class="img-scale-container mb-3">
+          <img loading="lazy" ix-src="{{category.image}}?auto=format" ix-sizes="auto" alt="{{shop.name}} > {{category.name}}">
+        </div>
+        {{/category.image}}
+
+        <h3 class="text-center h5">
+          <a href="{{category.url}}"
+            class="stretched-link">{{#element.title4_show}}{{#lang}}{{category.name}}{{/lang}}{{/element.title4_show}}</a>
+        </h3>
+
+      </div>
+    </div>
+    {{/element.category4_hide}}
+    {{/element.category4}}
+
+  </div>
+</section>
+{{/is_categories}}

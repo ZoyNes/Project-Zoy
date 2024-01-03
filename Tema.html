@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="no-javascript" lang="{{html_lang}}">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    
+    <title>{{seo.title}}</title>
+    
+    <meta name="author" content="Quickbutik" />
+    <meta name="description" content="{{seo.description}}" />
+    
+    <meta property="og:description" content="{{seo.description}}" />
+    <meta property="og:title" content="{{seo.title}}" />
+    <meta property="og:url" content="{{url_current}}" />
+    <meta property="og:site_name" content="{{shop.name}}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="{{#isProduct}}{{product.firstimage}}{{/isProduct}}" />
+    
+    <meta property="twitter:card" content="summary" />
+    <meta property="twitter:title" content="{{shop.name}}" />
+    <meta property="twitter:description" content="{{seo.description}}" />
+    <meta property="twitter:image" content="{{#isProduct}}{{product.firstimage}}{{/isProduct}}" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <script>document.documentElement.classList.remove('no-javascript');</script>
+    
+    <!-- Vendor Assets -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" />
+    <link href="{{#assets}}css/assets.min.css{{/assets}}" rel="stylesheet" />
+    
+    <!-- Theme Stylesheet -->
+    <link href="{{#assets}}css/theme-main.css{{/assets}}" rel="stylesheet" />
+    <link href="{{#assets}}css/theme-sub.css{{/assets}}" rel="stylesheet" />
+    <link href="{{#assets}}css/custom.css{{/assets}}" rel="stylesheet" />
+    
+    <!-- Google Fonts -->
+    {{#var_set}}{{settings.body_font_family}}|save:google_font|saveadd:WILD7C|remove:_=0,end|replace:_=:{{/var_set}}
+	  {{#var_set}}{{settings.headings_font_family}}|save:google_font|saveadd:WILD7C|remove:_=0,end|replace:_=:{{/var_set}}
+	  {{#var_if}}{{settings.body_font_family}}{{settings.headings_font_family}}=like_Google=1!0|save:any_google_fonts{{/var_if}}
+	  {{#var_if}}any_google_fonts=1=<link href="//fonts.googleapis.com/css?family={{#var_get}}google_font{{/var_get}}" rel="stylesheet" type="text/css"  media="all" />|is_var:1{{/var_if}}
+    
+    {{#isContact}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css" />
+    {{/isContact}}
+
+    <!-- Favicon-->
+    {{#settings.use_favicon}}
+    <link rel="icon" type="image/png" href="{{#assets}}favicon.png{{/assets}}" />
+    {{/settings.use_favicon}}
+    
+    <link rel="canonical" href="{{url_current}}">
+
+    <!-- Tweaks for older IEs-->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script
+    ><![endif]-->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imgix.js/4.0.0/imgix.min.js" integrity="sha512-SlmYBg9gVVpgcGsP+pIUgFnogdw1rs1L8x+OO3aFXeZdYgTYlFlyBV9hTebE6OgqCTDEjfdUEhcuWBsZ8LWOZA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <meta property="ix:useHttps" content="true">
+
+    {{>script_extras}}
+    
+    <style>.hide { display: none; }</style>
+  </head>
+ <body>
+ 
+    {{>top}}
+    
+    {{>cartbox}}
+
+    {{^isStart}}
+    {{#settings.use_breadcrumbs}}
+        <div data-qb-area="header" data-qb-setting="use_breadcrumbs" class="container pt-0 pt-lg-4">
+            <!-- Sidebar-->
+            <nav class="breadcrumb p-0" aria-label="breadcrumbs mb-0">
+              <ul class="breadcrumb mb-0 {{#settings.use_breadcrumbs_variation1}}mx-auto justify-content-center{{/settings.use_breadcrumbs_variation1}}">
+                {{#breadcrumbs}}
+                    <li class="breadcrumb-item {{#last}}active{{/last}}">{{^last}}<a href="{{url}}" title="{{title}}">{{title}}</a>{{/last}}{{#last}}{{title}}{{/last}}</li>
+                {{/breadcrumbs}}
+              </ul>
+            </nav>
+        </div>
+    {{/settings.use_breadcrumbs}}
+    {{/isStart}}
+    
+    {{>content}}
+    
+    {{>footer}}
+  
+
+    {{#isProduct}}
+    <div tabindex="-1" role="dialog" aria-hidden="true" class="pswp">
+      <div class="pswp__bg"></div>
+      <div class="pswp__scroll-wrap">
+        <div class="pswp__container">
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+          <div class="pswp__item"></div>
+        </div>
+        <div class="pswp__ui pswp__ui--hidden">
+          <div class="pswp__top-bar">
+            <div class="pswp__counter"></div>
+            <button title="Close (Esc)" class="pswp__button pswp__button--close"></button>
+            <button title="Share" class="pswp__button pswp__button--share"></button>
+            <button title="Toggle fullscreen" class="pswp__button pswp__button--fs"></button>
+            <button title="Zoom in/out" class="pswp__button pswp__button--zoom"></button>
+            <!-- element will get class pswp__preloader--active when preloader is running-->
+            <div class="pswp__preloader">
+              <div class="pswp__preloader__icn">
+                <div class="pswp__preloader__cut">
+                  <div class="pswp__preloader__donut"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+            <div class="pswp__share-tooltip"></div>
+          </div>
+          <button title="Previous (arrow left)" class="pswp__button pswp__button--arrow--left"></button>
+          <button title="Next (arrow right)" class="pswp__button pswp__button--arrow--right"></button>
+          <div class="pswp__caption">
+            <div class="pswp__caption__center text-center"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {{/isProduct}}
+    
+    <!-- Vendor script files -->
+    <script src="{{#assets}}js/assets.min.js{{/assets}}"></script>
+  
+    <!-- Theme script --> 
+    <script src="{{#assets}}js/qs_functions.js{{/assets}}"></script>
+    <script src="{{#assets}}js/theme.js{{/assets}}"></script>
+    
+    {{&qshop_shop_js}}
+    
+    {{#isContact}}
+    {{#settings.contact_show_map}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js"></script>
+    <script src="{{#assets}}js/contact.js{{/assets}}"></script>
+    {{/settings.contact_show_map}}
+    {{/isContact}}
+    
+    <script>
+    $('.mobile-search').click(function() {
+      $('body').click(function(event) {
+        var $target = $(event.target);
+        
+        if ($target.parents('.search-autocomplete-list').length == 0) {
+          $('.search-autocomplete-list').hide();
+        }
+      });
+    });
+    
+    $('#newsletter_form_startpage').submit(function(e){
+        e.preventDefault();
+        
+        $.post('/shop/newsletter', $.param($(this).serializeArray()), function(data) {
+            if(data.error) { 
+                alert($('#newsletter_form_startpage').data('txt-error'));
+            }else{
+                alert($('#newsletter_form_startpage').data('txt-success'));
+            }
+        }, "json");
+    });
+    
+    $('#newsletter_form').submit(function(e){
+        e.preventDefault();
+        
+        $.post('/shop/newsletter', $.param($(this).serializeArray()), function(data) {
+            if(data.error) { 
+                alert($('#newsletter_form').data('txt-error'));
+            }else{
+                alert($('#newsletter_form').data('txt-success'));
+            }
+        }, "json");
+    });
+    </script>
+  </body>
+</html>

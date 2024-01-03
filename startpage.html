@@ -1,0 +1,62 @@
+<div data-qb-area="start" data-qb-dynamic-elements="home_elements">
+    {{#settings.home_elements}}
+    
+    <!-- Components-->
+    {{>start_slider}}
+    {{>start_image_caption}}
+    {{>start_content_withimage}}
+    {{>start_herosection}}
+    {{>start_newsletter}}
+    {{>start_categories}}
+    {{>start_productgrid}}
+    {{>start_uspsection}}
+    {{>start_blog}}
+    {{>start_productslider}}
+    
+    {{#is_page}}
+    <section data-qb-element="page" class="container">
+        <div class="section_element row page-block">
+          <div class="col-sm-12">
+            {{&element.page.content}}
+          </div>
+        </div>
+    </section>
+    {{/is_page}}
+    
+    {{#is_custom}}
+    <section data-qb-element="custom" class="section_element container">
+      <div class="row">
+        <div class="col-12">
+          {{&element.content}}
+        </div>
+      </div>
+    </section>
+    {{/is_custom}}
+    
+    {{#is_title}}
+    <section data-qb-element="title" class="pt-2 pt-lg-4">
+      <div class="container">
+        <div class="hero-content">
+          <{{element.type}} data-qb-setting="title" class="{{element.text_align}}">{{#lang}}{{element.title}}{{/lang}}</{{element.type}}>
+          {{#element.optional_text}}
+          <p data-qb-setting="optional_text" class="lead {{element.text_align}} mb-0">
+            {{#lang}}{{element.optional_text}}{{/lang}}
+          </p>
+          {{/element.optional_text}}
+        </div>
+      </div>
+    </section>
+    {{/is_title}}
+    
+    {{#is_seperator}}
+    <section data-qb-element="seperator" class="{{element.size_above}} {{element.size_below}}">
+        <div class="{{#element.use_fullscreen}}container-fluid{{/element.use_fullscreen}} {{^element.use_fullscreen}}container{{/element.use_fullscreen}}">
+          <hr data-content="{{#lang}}{{element.text}}{{/lang}}"
+            class="hr-text m-0 color-text-base {{element.seperator_position}} h2 font-weight-bold {{element.type}}">
+        </div>
+    </section>
+    {{/is_seperator}}
+    
+    {{/settings.home_elements}}
+    </div>
+    

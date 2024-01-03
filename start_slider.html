@@ -1,0 +1,94 @@
+{{#is_slider}}
+<section
+  data-qb-element="slider"
+  class="section_element element_{{number}} {{^element.full}}container{{/element.full}} {{#element.full}}slider_pt_{{number}}{{/element.full}} pt-2 pt-lg-4">
+
+  <div class="contentstyle_{{element.image1_contentstyle}} home-slider-id{{number}} swiper-container home-slider"
+    data-home-slider-id="{{number}}"
+    data-home-slider-mobile-height="{{#element.home_slider_mobile_height}}{{element.home_slider_mobile_height}}{{/element.home_slider_mobile_height}}{{^element.home_slider_mobile_height}}{{element.home_slider_desktop_height}}{{/element.home_slider_mobile_height}}"
+    style="height: {{element.home_slider_desktop_height}}px">
+    <div class="swiper-wrapper">
+      <div style="background-image: url('{{element.image1}}&q=60');"
+        class="swiper-slide w-100 bg-cover bg-cover-center {{element.image1_style}}">
+        <div class="{{^element.centered}}container-fluid{{/element.centered}}{{#element.centered}}container{{/element.centered}} px-3 px-lg-4 h-100">
+          <div data-swiper-parallax="-500"
+            class="row h-100 align-items-center {{element.image1_content_align}} overlay-content">
+            <div class="col-lg-12">
+              <h2 data-qb-setting="image1_title" style="line-height: 1" class="display-4 font-weight-bold font-weight-bold">
+                {{#lang}}{{element.image1_title}}{{/lang}}
+              </h2>
+              <p data-qb-setting="image1_description" class="opacity-7 mb-3 lead">
+                {{#lang}}{{element.image1_description}}{{/lang}}
+              </p>
+              {{#element.image1_cta_text}}
+              <a 
+                data-qb-setting="image1_cta_text"
+                href="{{#lang}}{{element.image1_link}}{{/lang}}"
+                class="btn btn-dark border-0"
+                style="background-color: {{element.image1_cta_bgcolor}};">{{#lang}}{{element.image1_cta_text}}{{/lang}}</a>{{/element.image1_cta_text}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {{#element.use_image2}}
+      <div style="background-image: url('{{element.image2}}&q=60');"
+        class="swiper-slide bg-cover bg-cover-center {{element.image2_style}}">
+        <div class="{{^element.centered}}container-fluid{{/element.centered}}{{#element.centered}}container{{/element.centered}} px-3 px-lg-4 h-100">
+          <div data-swiper-parallax="-500"
+            class="row h-100 align-items-center {{element.image2_content_align}} overlay-content">
+            <div class="col-lg-12">
+              <h2 data-qb-setting="image2_title" style="line-height: 1" class="display-4 font-weight-bold font-weight-bold">
+                {{#lang}}{{element.image2_title}}{{/lang}}
+              </h2>
+              <p data-qb-setting="image2_description" class="opacity-7 mb-3 lead">
+                {{#lang}}{{element.image2_description}}{{/lang}}
+              </p>
+              {{#element.image2_cta_text}}
+              <a data-qb-setting="image2_cta_text"
+                href="{{#lang}}{{element.image2_link}}{{/lang}}"
+                class="btn btn-dark border-0"
+                style="background-color: {{element.image2_cta_bgcolor}};">{{#lang}}{{element.image2_cta_text}}{{/lang}}</a>
+              {{/element.image2_cta_text}}
+            </div>
+          </div>
+        </div>  
+      </div>
+      {{/element.use_image2}}
+
+      {{#element.use_image3}}
+      <div style="background-image: url('{{element.image3}}&q=60');"
+        class="swiper-slide bg-cover bg-cover-center {{element.image3_style}}">
+        <div class="{{^element.centered}}container-fluid{{/element.centered}}{{#element.centered}}container{{/element.centered}} px-3 px-lg-4 h-100">
+          <div data-swiper-parallax="-500"
+            class="row h-100 align-items-center {{element.image3_content_align}} overlay-content">
+            <div class="col-lg-12">
+              <h2 data-qb-setting="image3_title" style="line-height: 1" class="display-4 font-weight-bold font-weight-bold">
+                {{#lang}}{{element.image3_title}}{{/lang}}
+              </h2>
+              <p data-qb-setting="image3_description" class="opacity-7 mb-3 lead">
+                {{#lang}}{{element.image3_description}}{{/lang}}
+              </p>
+              {{#element.image3_cta_text}}
+              <a data-qb-setting="image3_cta_text" 
+                href="{{#lang}}{{element.image3_link}}{{/lang}}"
+                class="btn btn-dark border-0"
+                style="background-color: {{element.image3_cta_bgcolor}};">{{#lang}}{{element.image3_cta_text}}{{/lang}}</a>{{/element.image3_cta_text}}
+            </div>
+          </div>
+        </div>
+      </div>
+      {{/element.use_image3}}
+
+    </div>
+
+    <div class="swiper-pagination"></div>
+    <div class="swiper-nav d-none d-lg-block">
+      <div class="homePrev swiper-button-prev"></div>
+      <div class="homeNext swiper-button-next"></div>
+    </div>
+
+
+  </div>
+</section>
+{{/is_slider}}

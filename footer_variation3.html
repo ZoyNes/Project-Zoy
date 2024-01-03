@@ -1,0 +1,323 @@
+<!-- Section: Footer variant content starts -->
+<footer class="pb-2">
+    <div class="container-fluid">
+        <!--logo in footer starts-->
+        <div class="row justify-content-center py-4">
+          <a d-flex href="{{ shop.url }}" title="{{ shop.name }}" class="navbar-brand text-center p-0 header-flex-item">
+            {{^settings.use_logo}}{{ shop.name }}{{/settings.use_logo}}
+            {{#settings.use_logo}}
+              <img alt="{{ shop.name }}" class="img-fluid img-logo p-2" srcset="{{#img_srcset}}{{#assets}}logo.png{{/assets}}{{/img_srcset}}" src="{{#assets}}logo.png{{/assets}}" />
+            {{/settings.use_logo}}
+          </a>
+        </div>
+        <!--logo in footer ends-->
+    <!-- newsletter starts -->
+    {{#settings.footer_elements}} {{#is_newsletter}} {{^element.disabled}}
+    <div class="d-flex flex-column px-2 px-md-0 py-4 align-items-center"
+     style="background-color:{{element.footernewsletter_bgcolor}};">
+      <span style="color:{{element.footernewsletter_textcolor}};"
+        class="d-inline-block mb-2 text-lg text-center font-weight-bold">
+        {{#lang}}{{ element.title }}{{/lang}}
+      </span>
+      <form action="{{ newsletter_endpoint }}" data-txt-error="{{#lang}}Please enter your e-mail address.{{/lang}}"
+        data-txt-success="{{#lang}}You have now subscribed to our newsletter!{{/lang}}" method="post"
+        class="newsletter_form newsletter_form-v2 col-10 col-lg-8 px-0">
+        <div class="d-flex input-group shadow-sm bg-white input-group-underlined">
+          <input type="email" name="email" placeholder="{{#lang}}{{ element.text_placeholder }}{{/lang}}"
+            aria-label="{{#lang}}{{ element.text_placeholder }}{{/lang}}" class="form-control pl-3 ml-2 border-0" />
+          <div class="input-group-append ml-0">
+            <button type="submit" class="btn btn-underlined opacity-7 py-0 border-0">
+              <svg class="svg-icon">
+                <use xlink:href="#envelope-1"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    {{/element.disabled}} {{/is_newsletter}} {{/settings.footer_elements}}
+    <!-- newsletter ends -->
+  
+   
+  
+      <!------ Footer dynamic elements  ------>
+      {{#settings.footer_elements}}
+  
+      <!-- Free text starts-->
+      {{#is_freetext}} {{^element.disabled}}
+      <div class="row pt-3 pb-1 px-3">
+        <div class="
+                col-12 col-lg
+                d-lg-flex
+                justify-content-center
+                align-items-center
+              ">
+          <a data-toggle="collapse" href="#footerMenu1" aria-expanded="false" aria-controls="footerMenu1"
+            class="d-lg-none block-toggler my-3">{{#lang}}{{ element.title }}{{/lang}}
+            <span class="block-toggler-icon"></span>
+          </a>
+          <!-- Footer collapsible menu-->
+          <div id="footerMenu1" class="expand-lg collapse text-lg-center text-left ">
+            <h6 class="letter-spacing-1 mb-4 d-none d-lg-block">
+              {{#lang}}{{ element.title }}{{/lang}}
+            </h6>
+            <ul class="list-unstyled text-sm pt-2 pt-lg-0">
+              <li>{{#lang}}{{&element.text}}{{/lang}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      {{/element.disabled}} {{/is_freetext}}
+      <!-- Free text ends -->
+  
+      <!--Contact information starts-->
+      {{#is_contactinformation}} {{^element.disabled}}
+      <div class="row pt-3 pb-1 px-3">
+        <div class="col-12 col-lg">
+          <a data-toggle="collapse" href="#footerMenu0" aria-expanded="false" aria-controls="footerMenu0"
+            class="d-lg-none block-toggler my-3">{{#lang}}{{ element.title
+            }}{{/lang }}<span class="block-toggler-icon"></span></a>
+          <!-- Footer collapsible menu-->
+          <div id="footerMenu0" class="expand-lg collapse text-lg-center text-left">
+            <h6 class="letter-spacing-1 mb-4 d-none d-lg-block">
+              {{#lang}}{{ element.title }}{{/lang}}
+            </h6>
+            <ul class="list-unstyled text-sm pt-2 pt-lg-0">
+              <li>{{#lang}}{{&element.text}}{{/lang}}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      {{/element.disabled}} {{/is_contactinformation}}
+      <!--Contact information ends-->
+  
+      <!--footer menu starts-->
+      {{#is_footermenu}} {{^element.disabled}}
+      <div class="row px-0 pt-3 pt-lg-0 flex-lg-column justify-content-center align-items-center ">
+        <h6 class="letter-spacing-1 mb-4 d-none d-lg-block ">
+          {{#lang}}{{ element.title }}{{/lang}}
+        </h6>
+        <ul class="
+        navbar-nav
+        col-auto
+        d-flex
+        flex-sm-row 
+        text-md-left 
+        text-center
+        justify-content-between
+        mx-auto
+        px-0
+          ">
+          {{#linklist.footer}}
+          <li class="mb-2 mx-3 font-weight-bold">
+            <a class="opacity-hover-7 link-animated footer-textcolor " href="{{ url }}">{{#hasChildren}}<span>{{ name
+                }}</span>{{/hasChildren}}{{^hasChildren}}{{ name }}{{/hasChildren}}</a>
+            {{#hasChildren}}
+            <ul>
+              {{#children}}
+              <li>
+                <a class="opacity-hover-7 link-animated footer-textcolor" href="{{ url }}">- {{ name }}</a>
+              </li>
+              {{#hasChildren2}}
+                {{#children}}
+                  <li>
+                    <a class="opacity-hover-7 link-animated footer-textcolor" href="{{ url }}">- {{ name }}</a>
+                  </li>
+  
+                  {{#hasChildren3}}
+                    {{#children}}
+                      <li>
+                        <a class="opacity-hover-7 link-animated footer-textcolor" href="{{ url }}">-- {{ name }}</a>
+                      </li>
+  
+                      {{#hasChildren4}}
+                        {{#children}}
+                          <li>
+                            <a class="opacity-hover-7 link-animated footer-textcolor" href="{{ url }}">--- {{ name }}</a>
+                          </li>
+                        {{/children}}
+                      {{/hasChildren4}}
+  
+                    {{/children}}
+                  {{/hasChildren3}}
+  
+                {{/children}}
+              {{/hasChildren2}}
+              {{/children}}
+            </ul>
+            {{/hasChildren}}
+          </li>
+          {{/linklist.footer}}
+        </ul>
+      </div>
+      {{/element.disabled}} {{/is_footermenu}}
+      <!--footer menu ends-->
+  
+      <!-- Social icons starts-->
+  
+      {{#is_socialicons}} {{^element.disabled}}
+      <div class="row">
+        <div class="
+            col-12
+            py-2
+            d-flex
+            justify-content-center
+            flex-column
+            align-items-center
+          ">
+          <ul class="
+              list-unstyled
+              pt-2 pt-lg-0
+              d-flex
+              flex-wrap
+              justify-content-around
+              align-items-center
+              col-auto
+              mx-auto
+              mb-0 mb-lg-2
+              footer-icons-size
+            ">
+            {{#element.link_facebook}}
+            <li class="mx-md-3 mx-2 text-center">
+              <a href="{{ element.link_facebook }}" target="_blank"
+                class="opacity-hover-7 link-animated footer-textcolor"><i class="fab fa-facebook"></i></a>
+            </li>
+            {{/element.link_facebook}}
+            {{#element.link_instagram}}
+            <li class="mx-md-3 mx-2 text-center">
+              <a href="{{ element.link_instagram }}" target="_blank"
+                class="opacity-hover-7 link-animated footer-textcolor"><i class="fab fa-instagram"></i></a>
+            </li>
+            {{/element.link_instagram}}
+            {{#element.link_twitter}}
+            <li class="mx-md-3 mx-2 text-center">
+              <a href="{{ element.link_twitter }}" target="_blank"
+                class="opacity-hover-7 link-animated footer-textcolor"><i class="fab fa-twitter"></i></a>
+            </li>
+            {{/element.link_twitter}}
+            {{#element.link_youtube}}
+            <li class="mx-md-3 mx-2 text-center">
+              <a href="{{ element.link_youtube }}" target="_blank"
+                class="opacity-hover-7 link-animated footer-textcolor"><i class="fab fa-youtube"></i></a>
+            </li>
+            {{/element.link_youtube}}
+            {{#element.link_snapchat}}
+            <li class="mx-md-3 mx-2 text-center">
+              <a href="{{ element.link_snapchat }}" target="_blank"
+                class="opacity-hover-7 link-animated footer-textcolor"><i class="fab fa-snapchat"></i></a>
+            </li>
+            {{/element.link_snapchat}}
+            {{#element.link_pinterest}}
+            <li class="mx-md-3 mx-2 text-center">
+              <a href="{{ element.link_pinterest }}" target="_blank"
+                class="opacity-hover-7 link-animated footer-textcolor"><i class="fab fa-pinterest"></i></a>
+            </li>
+            {{/element.link_pinterest}}
+            {{#element.link_tiktok}}
+            <li class="mx-md-3 mx-2 text-center">
+              <a href="{{ element.link_tiktok }}" target="_blank"
+                class="opacity-hover-7 link-animated footer-textcolor"><i class="fab fa-tiktok"></i></a>
+            </li>
+            {{/element.link_tiktok}}
+          </ul>
+        </div>
+      </div>
+      {{/element.disabled}} {{/is_socialicons}}
+      <!-- Social icons ends -->
+  
+      <!-- Paymethod icons starts -->
+      {{#is_paymethodicons}} {{^element.disabled}}
+      <div class="row justify-content-center">
+        <div class="col-lg-auto mt-4">
+          <div class="text-center">
+            {{#element.paymentmethod_apple_pay}}
+            <img class="icon-payment px-2 my-2 col" src="{{#assets_payment}}payment-apple-pay.svg{{/assets_payment}}"
+              alt="Payment with Apple Pay" />
+            {{/element.paymentmethod_apple_pay}}
+            {{#element.paymentmethod_google_pay}}
+            <img class="icon-payment px-2 my-2 col" src="{{#assets_payment}}payment-google-pay.svg{{/assets_payment}}"
+              alt="Payment with Google Pay" />
+            {{/element.paymentmethod_google_pay}}
+            {{#element.paymentmethod_visa_color}}
+            <img class="icon-payment px-2 my-2 col" src="{{#assets_payment}}payment-visa-blue.svg{{/assets_payment}}"
+              alt="Payment with Visa" />
+            {{/element.paymentmethod_visa_color}}
+            {{#element.paymentmethod_visa_white}}
+            <img class="icon-payment px-2 my-2 col" src="{{#assets_payment}}payment-visa-white.svg{{/assets_payment}}"
+              alt="Payment with Visa" />
+            {{/element.paymentmethod_visa_white}}
+            {{#element.paymentmethod_mastercard_color}}
+            <img class="icon-payment px-2 my-2 col" src="{{#assets_payment}}payment-mastercard.svg{{/assets_payment}}"
+              alt="Payment with Mastercard" />
+            {{/element.paymentmethod_mastercard_color}}
+            {{#element.paymentmethod_mastercard_white}}
+            <img class="icon-payment px-2 my-2 col"
+              src="{{#assets_payment}}payment-mastercard-white.svg{{/assets_payment}}"
+              alt="Payment with Mastercard in white color" />
+            {{/element.paymentmethod_mastercard_white}}
+            {{#element.paymentmethod_klarna_color}}
+            <img class="icon-payment px-2 my-2 col" src="{{#assets_payment}}payment-klarna.svg{{/assets_payment}}"
+              alt="Payment with Klarna" />
+            {{/element.paymentmethod_klarna_color}}
+            {{#element.paymentmethod_klarna_white}}
+            <img class="icon-payment px-2 my-2 col" src="{{#assets_payment}}payment-klarna-white.svg{{/assets_payment}}"
+              alt="Payment with Klarna" />
+            {{/element.paymentmethod_klarna_white}}
+            {{#element.paymentmethod_payson_color}}
+            <img class="icon-payment px-2 my-2 col" src="{{#assets_payment}}payment-payson.svg{{/assets_payment}}"
+              alt="Payment with Payson" />
+            {{/element.paymentmethod_payson_color}}
+            {{#element.paymentmethod_nets_color}}
+            <img class="icon-payment px-2 my-2 col" src="{{#assets_payment}}payment-nets.svg{{/assets_payment}}"
+              alt="Payment with Nets" />
+            {{/element.paymentmethod_nets_color}}
+            {{#element.paymentmethod_nets_white}}
+            <img class="icon-payment px-2 my-2 col" src="{{#assets_payment}}payment-nets-white.svg{{/assets_payment}}"
+              alt="Payment with Nets" />
+            {{/element.paymentmethod_nets_white}}
+            {{#element.paymentmethod_paypal_color}}
+            <img class="icon-payment px-2 my-2 col" src="{{#assets_payment}}payment-paypal-color.svg{{/assets_payment}}"
+              alt="Payment with Paypal" />
+            {{/element.paymentmethod_paypal_color}}
+            {{#element.paymentmethod_paypal_white}}
+            <img class="icon-payment px-2 my-2 col" src="{{#assets_payment}}payment-paypal-white.svg{{/assets_payment}}"
+              alt="Payment with Paypal" />
+            {{/element.paymentmethod_paypal_white}}
+            {{#element.paymentmethod_vipps_color}}
+            <img class="icon-payment px-2 my-2 col" src="{{#assets_payment}}payment-vipps-color.svg{{/assets_payment}}"
+              alt="Payment with Vipps" />
+            {{/element.paymentmethod_vipps_color}}
+            {{#element.paymentmethod_vipps_white}}
+            <img class="icon-payment px-2 my-2 col" src="{{#assets_payment}}payment-vipps-white.svg{{/assets_payment}}"
+              alt="Payment with Vipps" />
+            {{/element.paymentmethod_vipps_white}}
+            {{#element.paymentmethod_swish_color}}
+            <img class="icon-payment px-2 my-2 col" src="{{#assets_payment}}payment-swish.png{{/assets_payment}}"
+              alt="Payment with Swish" />
+            {{/element.paymentmethod_swish_color}}
+            {{#element.paymentmethod_swish_white}}
+            <img class="icon-payment px-2 my-2 col" src="{{#assets_payment}}payment-swish-white.png{{/assets_payment}}"
+              alt="Payment with Swish" />
+            {{/element.paymentmethod_swish_white}}
+          </div>
+        </div>
+      </div>
+      {{/element.disabled}}{{/is_paymethodicons}}
+      <!-- Paymethod icons ends -->
+  
+      <!-- Copyright section of the footer-->
+      {{/settings.footer_elements}}
+      <div class="row">
+        <div class="d-flex justify-content-center col-12 text-sm mt-3">
+          <p class="text-center mb-0">
+            &copy; {{ year_current }} {{ shop.name }} {{#settings.use_poweredby }}
+            <span class="text-center text-powered-by pl-3 opacity-7">
+              {{&powered_by_quickbutik}}
+            </span>
+          </p>
+          {{/settings.use_poweredby}}
+        </div>
+      </div>
+    </div>
+    <!-- /Section: Footer variant content ends -->
+  </footer>

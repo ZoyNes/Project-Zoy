@@ -1,0 +1,123 @@
+<section data-qb-area="contact" class="py-4">
+    <div class="container">
+      {{#response_data}}
+        {{#success}}
+        <div role="alert" class="py-4 d-flex align-items-center pr-3 alert alert-success">
+          <svg class="svg-icon d-none d-sm-block w-3rem h-3rem svg-icon-light flex-shrink-0 mr-3">
+            <use xlink:href="#delivery-1"></use>
+          </svg>
+          {{&success_message}}
+          <button type="button" data-dismiss="alert" aria-label="Close"
+            class="close close-absolute close-centered opacity-10 text-inherit">
+            <svg class="svg-icon w-2rem h-2rem text-gray-100">
+              <use xlink:href="#close-1"></use>
+            </svg>
+          </button>
+        </div>
+        {{/success}}
+      {{/response_data}}
+      {{#response_data}}
+        {{#errors}}
+          {{#error_message}}
+          <div role="alert" class="py-4 d-flex align-items-center pr-3 alert alert-danger">
+            {{.}}
+            <button type="button" data-dismiss="alert" aria-label="Close"
+              class="close close-absolute close-centered opacity-10 text-inherit">
+              <svg class="svg-icon w-2rem h-2rem text-gray-100">
+                <use xlink:href="#close-1"></use>
+              </svg>
+            </button>
+          </div>
+          {{/error_message}}
+        {{/errors}}
+      {{/response_data}}
+  
+      <div class="row">
+        {{#settings.contact_show_forminfo}}
+        <div class="col">
+          <h2 data-qb-setting="contact_infotitle" class="font-weight-bold mb-4 mb-lg-4">
+            {{settings.contact_infotitle}}
+          </h2>
+  
+          {{#shop.contact_text}}
+          <p class="lead">{{&shop.contact_text}}</p>
+          {{/shop.contact_text}}
+  
+          {{#settings.contact_showAddress}}
+          <p data-qb-setting="contact_showAddress" class="lead">
+              {{#shop.address}}{{shop.address}}<br />{{/shop.address}}
+              {{#shop.city}}{{shop.zipcode}} {{shop.city}}<br />{{/shop.city}}
+              {{#shop.country}}{{shop.country}}{{/shop.country}}
+          </p>
+          {{/settings.contact_showAddress}}
+  
+        </div>
+        {{/settings.contact_show_forminfo}}
+        {{#settings.contact_show_form}}
+        <div class="col ml-auto">
+          <form role="form" id="contact-form" method="post" class="form">
+            <div class="row">
+              <div class="col-12">
+                <h3 data-qb-setting="contact_forminfo" class="mb-lg-2">
+                  {{settings.contact_forminfo}}
+                </h3>
+                <p data-qb-setting="contact_formtext" class="mb-4">{{settings.contact_formtext}}</p>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="name" class="form-label">{{#lang}}Name{{/lang}}</label>
+                  <input type="text" name="name" id="name" required="required"
+                    class="form-control color-text-base" />
+                </div>
+              </div>
+              <div class="col-sm-6">
+                <div class="form-group">
+                  <label for="email" class="form-label">{{#lang}}Email{{/lang}}</label>
+                  <input type="email" placeholder="" name="email" id="email"
+                    required="required" class="form-control color-text-base" />
+                </div>
+              </div>
+            </div>
+  
+            <div class="form-group">
+              <label for="message" class="form-label">{{#lang}}Message{{/lang}}</label>
+              <textarea rows="4" name="message" id="message" required="required"
+                class="form-control color-text-base"></textarea>
+            </div>
+            <button type="submit" name="send" value="send" class="btn btn-primary">
+              {{#lang}}Send{{/lang}}
+            </button>
+          </form>
+        </div>
+        {{/settings.contact_show_form}}
+      </div>
+    </div>
+  </section>
+  
+  <section data-qb-area="contact" class="bg-gray-200 text-dark mt-4 position-relative overflow-hidden">
+    <div class="container-fluid">
+      <div class="row">
+        {{#settings.contact_show_map}}
+        <div
+          class="{{#settings.contact_show_mapinfo}}col-lg-6{{/settings.contact_show_mapinfo}} {{^settings.contact_show_mapinfo}}col-12{{/settings.contact_show_mapinfo}} px-0">
+          <div id="map" style="height: 100%; min-height: 500px;" data-icon="{{#assets_load}}marker.svg{{/assets_load}}"
+            data-shopname="{{shop.name}}" data-address="{{shop.address}}" data-zip="{{shop.zipcode}}"
+            data-city="{{shop.city}}" data-country="{{shop.country}}" data-initial-zoom="{{settings.contact_initial_zoom}}"></div>
+        </div>
+        {{/settings.contact_show_map}}
+        {{#settings.contact_show_mapinfo}}
+        <div
+          class="{{#settings.contact_show_map}}col-lg-6{{/settings.contact_show_map}} {{^settings.contact_show_map}}col-12{{/settings.contact_show_map}} py-6 px-lg-5 px-xl-6">
+          <h3 data-qb-element="contact_maptitle" class="{{^settings.contact_maptext}}display-4{{/settings.contact_maptext}} font-weight-bold opacity-8 mb-5">
+            {{settings.contact_maptitle}}
+          </h3>
+          {{#settings.contact_maptext}}
+          <p data-qb-element="contact_maptext">
+            {{&settings.contact_maptext}}
+          </p>
+          {{/settings.contact_maptext}}
+        </div>
+        {{/settings.contact_show_mapinfo}}
+      </div>
+    </div>
+  </section>

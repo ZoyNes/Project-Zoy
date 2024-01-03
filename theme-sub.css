@@ -1,0 +1,311 @@
+/*
+* ===================================================
+*     Variables
+* ===================================================
+*/
+:root {
+    --primary-color: {{settings.color_primary}};
+    --text-color: {{settings.font_color}};
+}
+
+/*
+/*
+* ===================================================
+*     BASE SETTINGS
+* ===================================================
+*/
+
+{{#var_if}}{{settings.body_font_family}}   =like_Google    =1!0  	|save:is_google_body_font{{/var_if}}
+{{#var_set}}{{settings.body_font_family}}                       	|save:body_google_font     |remove:_=0,2,end|replace:+=SPACE{{/var_set}}
+{{#var_set}}{{settings.body_font_family}}                       	|save:body_font_serif      |remove:_=0,1,2|append:-{{/var_set}}
+
+{{#var_if}}
+    is_google_body_font=1='{{#var_get}}body_google_font{{/var_get}}', {{#var_get}}body_font_serif|append:serif{{/var_get}}
+    |save:body_font_family|is_var:1
+{{/var_if}}
+{{#var_if}}
+    is_google_body_font=0={{settings.body_font_family}}
+    |save:body_font_family|is_var:1
+{{/var_if}}
+
+{{#var_if}}{{settings.headings_font_family}}   =like_Google    =1!0  	|save:is_google_headings_font{{/var_if}}
+{{#var_set}}{{settings.headings_font_family}}                       	|save:headings_google_font     |remove:_=0,2,end|replace:+=SPACE{{/var_set}}
+{{#var_set}}{{settings.headings_font_family}}                       	|save:headings_font_serif      |remove:_=0,1,2|append:-{{/var_set}}
+
+{{#var_if}}
+    is_google_headings_font=1='{{#var_get}}headings_google_font{{/var_get}}', {{#var_get}}headings_font_serif|append:serif{{/var_get}}
+    |save:headings_font_family|is_var:1
+{{/var_if}}
+{{#var_if}}
+    is_google_headings_font=0={{settings.headings_font_family}}|save:headings_font_family|is_var:1
+{{/var_if}}
+
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6{
+    font-family: {{#var_get}}headings_font_family{{/var_get}};
+}
+
+body {
+    background-color: {{settings.bg_color}};
+	font-family: {{#var_get}}body_font_family{{/var_get}};
+	font-size: {{settings.body_font_size}};
+}
+
+/* toggle dropdown icon rotate */
+
+.rotate {
+  transform: rotate(-90deg);
+  padding-right: 10px;
+}
+
+/*
+* ===================================================
+*     OTHER SETTINGS
+* ===================================================
+*/
+
+.modal-content {
+    background-color: {{settings.bg_color}};
+}
+
+.text-base {
+    font-size: {{settings.body_font_size}};
+}
+
+.producttitle-font-size {
+    font-size: {{settings.list_title_fontsize}};
+}
+
+.mainmenu_font_size {
+    font-size: {{settings.mainmenu_font_size}};
+    line-height: 1rem;
+}
+
+.dropdown_top {
+    top: 2px !important;
+}
+
+footer, .text-powered-by a, .text-powered-by a:hover {
+    background-color: {{settings.footer_bgcolor}};
+    color: {{settings.footer_textcolor}};
+}
+
+.block-toggler, .block-toggler:focus, .block-toggler:hover, .block-toggler[aria-expanded="true"] {
+    color: {{settings.footer_textcolor}};
+}
+
+.block-toggler:hover .block-toggler-icon:before, .block-toggler[aria-expanded="true"] .block-toggler-icon:before, .block-toggler .block-toggler-icon:after, .block-toggler .block-toggler-icon:before, .block-toggler:hover .block-toggler-icon:after, .block-toggler[aria-expanded="true"] .block-toggler-icon:after {
+    background-color: {{settings.footer_textcolor}};
+}
+
+.top-bar {
+    background: {{settings.top_bgcolor}};
+    color: {{settings.top_textcolor}};
+}
+
+.navbar-bg {
+    background-color: {{settings.menu_bgcolor}}
+}
+
+.navbar-light .navbar-nav .show > .nav-link, .navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .active > .nav-link:focus, .navbar-light .navbar-nav .active > .nav-link, .navbar-light .navbar-nav .active > .nav-link:hover, .navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link:hover {
+    color: {{settings.menu_textcolor}};
+}
+
+.navbar-checkout-btn, .product-btn-addcart {
+    color: {{settings.productpage_addcart_color}};
+    background: {{settings.productpage_addcart_bgcolor}};
+    transition: all 0.2s ease-in-out;
+}
+
+.navbar-checkout-btn:hover, .product-btn-addcart:hover {
+    color: {{settings.productpage_addcart_color}};
+    background: {{settings.productpage_addcart_bgcolor}};
+}
+
+footer .list-unstyled a > i.fab {
+    margin-right: 7px;
+}
+
+.footer-textcolor, .footer-textcolor:hover {
+    color: {{settings.footer_textcolor}};
+}
+
+.footer-textcolor::after {
+    background: {{settings.footer_textcolor}};
+}
+
+.img-logo {
+    {{#settings.logo_height_size}}max-height: {{settings.logo_height_size}}px;{{/settings.logo_height_size}};
+}
+
+@media(max-width:992px) {
+    .img-logo {
+        {{#settings.logo_height_mobile_size}}max-height: {{settings.logo_height_mobile_size}}px;{{/settings.logo_height_mobile_size}}
+    }
+}
+
+.hr-text:after {
+    background-color: {{settings.bg_color}};
+}
+
+body, .fa-star-o:before, .form-label, .color-text-base:hover, .color-text-base:focus, .color-text-base, .btn-inverse, .btn-inverse:hover, .color-text-base:hover, .link-animated:after, .primary-bg, a, a:hover, .nav-link, .product-grid-header-show.active, .navbar-icon, .breadcrumb-item a, .product-before-price, .breadcrumb-item+.breadcrumb-item::before, .breadcrumb-item.active, .detail-nav-link.nav-link, .close, .table {
+    color: {{settings.font_color}};
+}
+
+/** Wishlist **/
+.product > div {
+    position: relative;
+}
+
+.wishlist-icon.wishlist-add--left {
+    top: 10px;
+    left: 12px;
+    right: inherit;
+    line-height: 100%;
+}
+
+.wishlist-icon.wishlist-add--right {
+    top: 10px;
+    left: inherit;
+    right: 12px;
+    line-height: 100%;
+}
+
+.wishlist-btn.wishlist-add {
+    color: {{settings.font_color}} !important;
+}
+
+/** Ribbons **/
+.ribbon--classic.ribbon--left {
+    left: -4px !important;
+    top: -4px !important;
+}
+
+.ribbon--classic.ribbon--right {
+    right: -4px !important;
+    top: -4px !important;
+}
+
+#product .ribbon--right {
+    right: -19px !important;
+}
+
+#product .ribbon--left {
+    left: 11px !important;
+}
+
+.swiper-pagination-bullet-active {
+    background: {{settings.font_color}};
+}
+
+.text-soldout {
+    color: var(--red);
+}
+
+.product-price, .nav-link.active, .color-primary, .nav-link.active, .product-grid-header-show.active, a, .product-grid-header-show.active:hover {
+    color: {{settings.color_primary}};
+}
+
+.header-textcolor,
+.navbar-light .navbar-brand {
+    color: {{settings.header_textcolor}};
+}
+
+.header-textcolor:hover,
+.navbar-light .navbar-brand:hover {
+    color: {{settings.header_textcolor}};
+}
+
+.header-textcolor:hover {
+    opacity: var(--hover-opacity);
+}
+
+.navbar-light .navbar-brand:hover {
+    opacity: 1;
+}
+
+.header-bgcolor {
+    background-color: {{settings.header_bgcolor}};
+}
+
+.icon-count {
+    background: {{settings.color_primary}};
+}
+
+.btn-primary {
+    background: {{settings.color_primary}};
+    border-color: {{settings.color_primary}};
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:not(:disabled):not(.disabled):active {
+    background: {{settings.color_primary}};
+    border-color: {{settings.color_primary}};
+}
+
+.btn-outline-primary {
+    color: {{settings.color_primary}};
+    border-color: {{settings.color_primary}};
+}
+
+.btn-link.color-primary:hover {
+    color: {{settings.color_primary}};
+}
+
+@media(min-width:768px) {
+    .manual-product-height {
+        height: {{settings.list_productimage_manualheight}}px !important;
+        width: auto !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: {{settings.container_size}};
+    }
+}
+
+.form-control:focus {
+    border-color: {{settings.color_primary}};
+}
+
+.detail-nav-link.nav-link.active {
+    border-color: transparent transparent {{settings.color_primary}};
+}
+
+.productsort, .productfilter, .start-bannerwithimg-img, .start-blog, .footer-newsletter, .bloglist, .start-uspsection, .productpage-image, .btn, .product-swap-image-front, .product-swap-image-back, .card, .startpage_newsletter_wrapper, .blog_post_image_img, .form-control, .navbar-cart-product-image, .search-wrapper, .newsletter-wrapper,
+.section_element.container .home-slider, .product-swap-image-effect .product-swap-image-front, .product-swap-image-effect .product-swap-image-back, .product-swap-image img,
+.navbar-cart-product .navbar-cart-product-image, .dropdown-menu, .search-autocomplete-list, .qs-cart-message, .category_image {
+    border-radius: {{settings.borders_radius}};
+}
+
+.detail-carousel .swiper-slide > div {
+    overflow: hidden;
+    border-radius: {{settings.borders_radius}};
+}
+
+.detail-quantity {
+    border-bottom-left-radius: {{settings.borders_radius}};
+    border-top-left-radius: {{settings.borders_radius}};
+}
+
+.search-wrapper.input-group>.input-group-append:not(:last-child)>.btn {
+    border-top-right-radius: {{settings.borders_radius}};
+    border-bottom-right-radius: {{settings.borders_radius}};
+}
+
+@media (max-width: 576px) {
+    .productsort, .productfilter {
+        width: 100%;
+        margin-bottom: 0.8rem;
+    }
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+#description iframe {
+    max-width: 100%;
+}

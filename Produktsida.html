@@ -1,0 +1,274 @@
+{{#isStart}}
+  {{>startpage}}
+{{/isStart}}
+
+{{^isStart}}
+  <div class="container {{#settings.use_breadcrumbs}}py-0 pb-4{{/settings.use_breadcrumbs}}{{^settings.use_breadcrumbs}}py-4{{/settings.use_breadcrumbs}} text-break">
+    
+    <!-- Grid -->
+    <div data-qb-area="category" class="products-grid">
+
+      <!-- Hero Content-->
+      <div class="hero-content pb-1 pb-lg-4">
+        <div class="collection-header pb-4">
+          
+          {{#settings.list_show_cattitle}}
+          <h1 data-qb-element="list_title_align" class="{{settings.list_title_align}}">{{category.name}}</h1>
+          {{/settings.list_show_cattitle}}
+          
+          {{#category.description1}}
+          <div>
+            {{&category.description1}}
+          </div>
+          {{/category.description1}}
+          
+          {{^isSearch}}
+
+            {{#settings.list_show_subcat}}
+              <!-- Kategoriöversikt start -->
+              {{#linklist.main}}
+                {{#current}}
+                  {{#hasChildren}}
+                    <div class="categoryOverview row">
+                      {{#children}}
+                        {{^current}}
+                          {{#current_url}}
+                              <div class="col-6 card-scale col-sm-6 col-md-3 pb-4">
+                                <div class="categorylist">
+                                  {{#hasImage}}
+                                    <div class="category_image img-scale-container">
+                                      <a href="{{url}}" title="{{name}}">
+                                        <img loading="lazy" alt="{{name}} - {{shop.name}}" srcset="{{#img_srcset}}{{image}}{{/img_srcset}}" src="{{image}}" class="w-100 img-scale" />
+                                      </a>
+                                    </div>
+                                  {{/hasImage}}
+                                  {{#settings.list_show_subcat_title}}
+                                    <div class="category_buttonarea my-2">
+                                      <a href="{{url}}" title="{{name}}" class="category_cta h4">{{name}}</a>
+                                    </div>
+                                  {{/settings.list_show_subcat_title}}
+                                </div>
+                              </div>
+                          {{/current_url}}
+                        {{/current}}
+                        {{#current}}
+                          {{#hasChildren2}}
+                            {{#children}}
+                              {{^current}}
+                                {{#current_url}}
+                                    <div class="col-6 card-scale col-sm-6 col-md-3 pb-4">
+                                      <div class="categorylist">
+                                        {{#hasImage}}
+                                          <div class="category_image img-scale-container">
+                                            <a href="{{url}}" title="{{name}}">
+                                              <img loading="lazy" alt="{{name}} - {{shop.name}}" srcset="{{#img_srcset}}{{image}}{{/img_srcset}}" src="{{image}}" class="w-100 img-scale" />
+                                            </a>
+                                          </div>
+                                        {{/hasImage}}
+                                        {{#settings.list_show_subcat_title}}
+                                          <div class="category_buttonarea my-2">
+                                            <a href="{{url}}" title="{{name}}" class="category_cta h4">{{name}}</a>
+                                          </div>
+                                        {{/settings.list_show_subcat_title}}
+                                      </div>
+                                    </div>
+                                {{/current_url}}
+                              {{/current}}
+                              {{#current}}
+                                {{#hasChildren3}}
+                                  {{#children}}
+                                    {{^current}}
+                                      {{#current_url}}
+                                          <div class="col-6 card-scale col-sm-6 col-md-3 pb-4">
+                                            <div class="categorylist">
+                                              {{#hasImage}}
+                                                <div class="category_image img-scale-container">
+                                                  <a href="{{url}}" title="{{name}}">
+                                                    <img loading="lazy" alt="{{name}} - {{shop.name}}" srcset="{{#img_srcset}}{{image}}{{/img_srcset}}" src="{{image}}" class="w-100 img-scale" />
+                                                  </a>
+                                                </div>
+                                              {{/hasImage}}
+                                              {{#settings.list_show_subcat_title}}
+                                                <div class="category_buttonarea my-2">
+                                                  <a href="{{url}}" title="{{name}}" class="category_cta h4">{{name}}</a>
+                                                </div>
+                                              {{/settings.list_show_subcat_title}}
+                                            </div>
+                                          </div>
+                                      {{/current_url}}
+                                    {{/current}}
+                                    {{#current}}
+                                      {{#hasChildren4}}
+                                        {{#children}}
+                                          {{^current}}
+                                            {{#current_url}}
+                                                <div class="col-6 card-scale col-sm-6 col-md-3 pb-4">
+                                                  <div class="categorylist">
+                                                    {{#hasImage}}
+                                                      <div class="category_image img-scale-container">
+                                                        <a href="{{url}}" title="{{name}}">
+                                                          <img loading="lazy" alt="{{name}} - {{shop.name}}" srcset="{{#img_srcset}}{{image}}{{/img_srcset}}" src="{{image}}" class="w-100 img-scale" />
+                                                        </a>
+                                                      </div>
+                                                    {{/hasImage}}
+                                                    {{#settings.list_show_subcat_title}}
+                                                      <div class="category_buttonarea my-2">
+                                                        <a href="{{url}}" title="{{name}}" class="category_cta h4">{{name}}</a>
+                                                      </div>
+                                                    {{/settings.list_show_subcat_title}}
+                                                  </div>
+                                                </div>
+                                            {{/current_url}}
+                                          {{/current}}
+                                        {{/children}}
+                                      {{/hasChildren4}}
+                                    {{/current}}
+                                  {{/children}}
+                                {{/hasChildren3}}
+                              {{/current}}
+                            {{/children}}
+                          {{/hasChildren2}}
+                        {{/current}}
+                      {{/children}}
+                    </div>
+                  {{/hasChildren}}
+                {{/current}}
+              {{/linklist.main}}
+              <!-- Kategoriöversikt slut -->
+            {{/settings.list_show_subcat}}
+            
+          {{/isSearch}}
+        </div>
+      </div>
+    </div>
+
+    <!-- products-->
+    <div data-aos="{{settings.aos_effect}}" class="pt-3 clear-both" data-aos-delay="0">
+      <section class="row">
+        {{#settings.list_productimage_manualheight}}
+          {{#var_if}}{{settings.list_rowsort}}=col-md-3 col-6=250x{{settings.list_productimage_manualheight}}|save:imagesize{{/var_if}}
+          {{#var_if}}{{settings.list_rowsort}}=col-md-3 col-12=250x{{settings.list_productimage_manualheight}}|save:imagesize{{/var_if}}
+          {{#var_if}}{{settings.list_rowsort}}=col-md-4 col-6=350x{{settings.list_productimage_manualheight}}|save:imagesize{{/var_if}}
+          {{#var_if}}{{settings.list_rowsort}}=col-md-4 col-12=350x{{settings.list_productimage_manualheight}}|save:imagesize{{/var_if}}
+          {{#var_if}}{{settings.list_rowsort}}=col-md-6 col-6=500x{{settings.list_productimage_manualheight}}|save:imagesize{{/var_if}}
+          {{#var_if}}{{settings.list_rowsort}}=col-md-6 col-12=500x{{settings.list_productimage_manualheight}}|save:imagesize{{/var_if}}
+        {{/settings.list_productimage_manualheight}}
+        {{^settings.list_productimage_manualheight}}
+          {{#var_if}}{{settings.list_rowsort}}=col-md-3 col-6=250x250|save:imagesize{{/var_if}}
+          {{#var_if}}{{settings.list_rowsort}}=col-md-3 col-12=250x250|save:imagesize{{/var_if}}
+          {{#var_if}}{{settings.list_rowsort}}=col-md-4 col-6=350x350|save:imagesize{{/var_if}}
+          {{#var_if}}{{settings.list_rowsort}}=col-md-4 col-12=350x350|save:imagesize{{/var_if}}
+          {{#var_if}}{{settings.list_rowsort}}=col-md-6 col-6=500x500|save:imagesize{{/var_if}}
+          {{#var_if}}{{settings.list_rowsort}}=col-md-6 col-12=500x500|save:imagesize{{/var_if}}
+        {{/settings.list_productimage_manualheight}}
+        {{#products}}
+          <div class="{{settings.list_rowsort}} product" data-pid="{{ product.id }}" data-s-price="{{^user.logged_out_hide_prices}}{{ product.price_raw }}{{/user.logged_out_hide_prices}}" data-s-title="{{ product.title }}">
+            <div class="product-addons"></div>
+            <div data-aos="{{settings.aos_effect}}" data-aos-delay="0" class="aos-init aos-animate">
+              <div class="product-image mb-2 mb-md-3">
+                <a href="{{product.url}}">
+                  <div class="{{#settings.use_swapimage}}product-swap-image{{/settings.use_swapimage}} text-center {{#settings.list_productimage_manualheight}}manual-product-height{{/settings.list_productimage_manualheight}} {{#product.has_secondimage}}product-swap-image-effect{{/product.has_secondimage}}">
+                    <img loading="lazy" srcset="{{#img_srcset}}{{#img}}{{product.firstimage}}_{{#var_get}}imagesize{{/var_get}}{{#settings.list_productimage_crop}}_crop{{/settings.list_productimage_crop}}{{/img}}{{/img_srcset}}" src="{{#img}}{{product.firstimage}}_{{#var_get}}imagesize{{/var_get}}{{#settings.list_productimage_crop}}_crop{{/settings.list_productimage_crop}}{{/img}}" alt="{{product.title}}" class="{{#settings.use_swapimage}}product-swap-image-front{{/settings.use_swapimage}} mw-100 mh-100 mx-auto" />
+                    {{#settings.use_swapimage}}
+                      {{#product.has_secondimage}}
+                        <img loading="lazy" srcset="{{#img_srcset}}{{#img}}{{product.secondimage}}_{{#var_get}}imagesize{{/var_get}}{{#settings.list_productimage_crop}}_crop{{/settings.list_productimage_crop}}{{/img}}{{/img_srcset}}" src="{{#img}}{{product.secondimage}}_{{#var_get}}imagesize{{/var_get}}{{#settings.list_productimage_crop}}_crop{{/settings.list_productimage_crop}}{{/img}}" alt="{{product.title}}" class="product-swap-image-back mw-100 mh-100 mx-auto " />
+                      {{/product.has_secondimage}}
+                      {{^product.has_secondimage}}
+                        <img loading="lazy" srcset="{{#img_srcset}}{{#img}}{{product.firstimage}}_{{#var_get}}imagesize{{/var_get}}{{#settings.list_productimage_crop}}_crop{{/settings.list_productimage_crop}}{{/img}}{{/img_srcset}}" src="{{#img}}{{product.firstimage}}_{{#var_get}}imagesize{{/var_get}}{{#settings.list_productimage_crop}}_crop{{/settings.list_productimage_crop}}{{/img}}" alt="{{product.title}}" class="product-swap-image-back mw-100 mh-100 mx-auto " />
+                      {{/product.has_secondimage}}
+                    {{/settings.use_swapimage}}
+                  </div>
+                </a>
+                {{#settings.list_show_buybtn}}
+                {{^user.logged_out_hide_add_to_cart}}
+                  <div class="product-hover-overlay">
+                    {{^product.soldOut}}
+                      {{^product.hasOptions}}
+                        <form class="qs-cart w-100 text-center" method="post">
+                          <input type="hidden" class="qs-cart-pid" value="{{ product.id }}" />
+                          <input type="hidden" class="qs-cart-price" value="{{^user.logged_out_hide_prices}}{{ product.price_raw }}{{/user.logged_out_hide_prices}}" />
+                          <input name="qs-cart-qty" type="hidden" class="qs-cart-qty qty-picker" value="1" />
+                          <button type="submit" name="add" class="text-dark text-hover-primary bg-transparent border-0 qs-cart-submit">
+                            <svg class="svg-icon svg-icon-heavy d-md-none">
+                              <use xlink:href="#{{settings.icon_cart1}}"></use>
+                            </svg>
+                            <span class="d-inline text-dark text-base">{{settings.product_ctabtn_text}}</span>
+                          </button>
+                        </form>
+                      {{/product.hasOptions}}
+                      {{#product.hasOptions}}
+                        <a href="{{ product.url }}" class="text-base text-dark w-100 text-center">{{#lang}}Multiple choices{{/lang}}</a>
+                      {{/product.hasOptions}}
+                    {{/product.soldOut}}
+                    {{#product.soldOut}}
+                      <a href="{{ product.url }}" class="text-base w-100 text-center text-dark">{{#lang}}Go to product{{/lang}}</a>
+                    {{/product.soldOut}}
+                  </div>
+                {{/user.logged_out_hide_add_to_cart}}
+                {{/settings.list_show_buybtn}}
+              </div>
+            </div>
+            <div class="position-relative {{settings.list_producttitle_align}}">
+              <h2 class="producttitle-font-size">
+                <a class="color-text-base" href="{{ product.url }}">{{#lang}}{{ product.title }}{{/lang}}</a>
+              </h2>
+              <span class="opacity-7 text-base{{#product.soldOut}} text-soldout{{/product.soldOut}}">
+                {{#product.soldOut}}
+                  {{#settings.list_show_stock}}
+                    {{settings.list_soldout_text}}
+                  {{/settings.list_show_stock}}
+                {{/product.soldOut}}
+                {{^product.soldOut}}
+                  {{#settings.list_show_price}}
+                  {{^user.logged_out_hide_prices}}
+                    {{#product.has_before_price}}
+                      <span class="opacity-7">
+                        <s class="qs-product-before-price product-before-price">{{ product.before_price }}</s>
+                      </span>
+                    {{/product.has_before_price}}
+                    <span class="product-price">{{ product.price }}</span>
+                    {{/user.logged_out_hide_prices}}
+                  {{/settings.list_show_price}}
+                {{/product.soldOut}}
+              </span>
+              <div class="product-stars text-xs d-none d-sm-inline">
+                {{^product.soldOut}}
+                  {{#settings.list_show_stock}}
+                    <span data-in-stock-text="{{settings.productpage_txt_instock}}" data-out-of-stock-text="{{settings.productpage_txt_outofstock}}" data-combination-not-exist-text="{{#lang}}Variant does not exist{{/lang}}" class="text-success">
+                      <i class="fa fa-check mr-1"></i> {{settings.productpage_txt_instock}}
+                    </span>
+                  {{/settings.list_show_stock}}
+                {{/product.soldOut}}
+              </div>
+            </div>
+          </div>
+        {{/products}}
+      </section>
+    </div>
+    <!-- /Products-->
+
+    <!-- Pagination -->
+    {{#pagination.has_more_pages}}
+    <div class="container py-2">
+        <div class="text-center">
+            {{#pagination.previous_page_url}}
+            <a href="{{pagination.previous_page_url}}#products" class="inline-block px-4 py-2 btn-primary mx-1" style="display:inline-block; width:150px">{{#lang}}Previous{{/lang}}</a>
+            {{/pagination.previous_page_url}}
+            
+            {{#pagination.next_page_url}}
+            <a href="{{pagination.next_page_url}}#products" class="inline-block px-4 py-2 btn-primary mx-1" style="display:inline-block; width:150px">{{#lang}}Next{{/lang}}</a>
+            {{/pagination.next_page_url}}
+        </div>
+        <div class="pt-2 text-center small opacity-7">
+            {{#lang}}Showing page{{/lang}} {{pagination.current_page}} {{#lang}}of{{/lang}} {{pagination.total_page_count}}, {{#lang}}total of{{/lang}} {{pagination.total_product_count}} {{#lang}}products{{/lang}}         </div>
+    </div>
+    {{/pagination.has_more_pages}}
+
+    {{#category.description2}}
+    <div>
+      {{&category.description2}}
+    </div>
+    {{/category.description2}}
+    
+  </div>
+{{/isStart}}

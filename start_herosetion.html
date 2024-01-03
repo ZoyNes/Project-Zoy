@@ -1,0 +1,46 @@
+{{#is_herosection}}
+{{^element.full}}<div class="container">{{/element.full}}
+  
+<style>
+  .hero.hero-image.slider_mt_{{number}} {
+    {{#element.image_desktop_height}}
+    height: {{element.image_desktop_height}}px;
+    {{/element.image_desktop_height}}
+    {{^element.image_desktop_height}}
+    height: 450px;
+    {{/element.image_desktop_height}}
+  }
+  @media(max-width:768px) {
+    .hero.hero-image.slider_mt_{{number}} {
+      {{#element.image_mobile_height}}
+      height: {{element.image_mobile_height}}px;
+      {{/element.image_mobile_height}}
+    }
+  }
+</style>
+
+<section data-qb-element="herosection" data-parallax="scroll" data-image-src="{{element.image}}&auto=format&fit=crop&max-w=1920&q=65" data-speed="0.5" data-position-x="center"
+  data-position-y="center" class="hero hero-image mt-2 mt-lg-4 {{element.content_style}} slider_mt_{{number}}">
+  <div class="container overlay-content">
+    <div class="hero-content">
+
+      {{#element.title}}
+      <h1 data-qb-setting="title" class="hero-heading mb-2">{{#lang}}{{element.title}}{{/lang}}</h1>
+      {{/element.title}}
+      
+      {{#element.optional_text}}
+      <p data-qb-setting="optional_text" class="lead">
+        {{#lang}}{{element.optional_text}}{{/lang}}
+      </p>
+      {{/element.optional_text}}
+      
+      {{#element.cta_text}}
+      <a data-qb-setting="cta_text" href="{{#lang}}{{element.cta_url}}{{/lang}}" class="btn btn-dark border-0" style="background-color: {{element.cta_bgcolor}};">{{#lang}}{{element.cta_text}}{{/lang}}</a>
+      {{/element.cta_text}}
+
+      </div>
+  </div>
+</section>
+
+{{^element.full}}</div>{{/element.full}} 
+{{/is_herosection}}

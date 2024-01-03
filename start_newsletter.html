@@ -1,0 +1,32 @@
+{{#is_newsletter}}
+<section data-qb-element="newsletter" class="pt-2 pt-lg-4 container startpage_newsletter">
+    <div class="startpage_newsletter_wrapper" style="background-color: {{element.newsletter_bgcolor}}; color: {{element.newsletter_textcolor}};">
+        <div class="row py-2 py-lg-4 px-2 px-lg-4 align-items-center">
+        <div class="col-lg-6">
+            <h4 data-qb-setting="title">{{#lang}}{{element.title}}{{/lang}}</h4>
+          <p data-qb-setting="description">
+            {{#lang}}{{element.description}}{{/lang}}
+          </p>
+      </div>
+      <form id="newsletter_form_startpage" class="col-lg-6" action="{{newsletter_endpoint}}"
+        data-txt-error="{{#lang}}Please enter your e-mail address.{{/lang}}"
+        data-txt-success="{{#lang}}You have now subscribed to our newsletter!{{/lang}}" method="post" target="_blank"
+        class="col-lg-6">
+        
+        <div class="newsletter-wrapper input-group shadow-sm bg-white input-group-underlined">
+          <input data-qb-setting="text_placeholder" type="email" name="email" placeholder="{{#lang}}{{element.text_placeholder}}{{/lang}}"
+            aria-label="{{#lang}}{{element.text_placeholder}}{{/lang}}" class="form-control pl-3 border-0" />
+          <div class="input-group-append ml-0">
+            <button type="submit" class="btn btn-underlined opacity-7 py-0 border-0">
+              <svg class="svg-icon w-2rem h-2rem">
+                <use xlink:href="#envelope-1"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+        
+      </form>
+    </div>
+    </div>
+</section>
+{{/is_newsletter}} 

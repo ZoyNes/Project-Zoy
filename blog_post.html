@@ -1,0 +1,35 @@
+<article class="hero post py-4" itemscope itemtype="http://schema.org/BlogPosting">
+    <div class="container">
+      <div class="hero-content hero-heading">
+        <h1 itemprop="headline mainEntityOfPage" class="hero-heading text-center mb-1">{{post.title}}</h1>
+        <p class="opacity-7 mb-0 text-center">
+          <meta itemprop="datePublished dateModified" content="{{post.date}}">
+          <span itemprop="author">{{post.author}}</span> <span class="mx-1">|</span><span>{{post.date_pretty}}</span>
+        </p>
+      </div>
+  
+      <div class="row">
+        {{#post.hasImage}}
+        <div class="blog_post_image col-xl-11 mx-auto" itemprop="image" itemscope
+          itemtype="https://schema.org/ImageObject">
+          <img loading="lazy" class="img-fluid blog_post_image_img mb-5 mx-auto d-block" srcset="{{#img_srcset}}{{post.image}}{{/img_srcset}}" src="{{post.image}}" src="{{post.image}}" alt="{{post.title}}" itemprop="image">
+          <meta itemprop="url" content="{{post.image}}">
+          <meta itemprop="width" content="500">
+          <meta itemprop="height" content="500">
+        </div>
+        {{/post.hasImage}}
+  
+      </div>
+      <div class="row blog_post_details">
+        <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+          <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+            <meta itemprop="url" content="{{#assets}}logo.png{{/assets}}">
+            <meta itemprop="width" content="150">
+            <meta itemprop="height" content="150">
+          </div>
+          <meta itemprop="name" content="{{shop.name}}">
+        </div>
+        <div class="blog_post_content col-xl-8 col-lg-10 mx-auto" itemprop="articleBody">{{&post.content}}</div>
+      </div>
+    </div>
+  </article>
